@@ -1,13 +1,14 @@
 <template>
     <div class="container">
-        <h1>작업중...</h1>
+        <div class="py-3">
+            <h1 class="display-5">chick_0</h1>
+            <p >qwerty asdf jkl; / {{page}}</p>
+        </div>
 
-        <p @click="page += 1">go next page! : page = {{ page }}</p>
-        <p @click="page = 1">reset to 1</p>
-
+        <h1 class="display-6">프로젝트</h1>
         <div v-for:="project in projects">
-            <router-link :to="{ name: 'Project', params: { uuid: project.uuid } }">
-                <div class="py-2">
+            <router-link :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
+                <div class="py-3">
                     <h3>{{ project.title }}</h3>
                     <p class="lead">{{ project.date }}</p>
 
@@ -16,42 +17,56 @@
             </router-link>
         </div>
 
-        <div class="d-grid py-3">
-            <button class="btn btn-outline-primary btn-lg" @click="page += 1">더 불러오기</button>
+        <div class="row py-3 gap-1" v-if="max_page > page">
+            <button class="col btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
+            <button id="nextBtn" class="col btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
         </div>
     </div>
 </template>
 
 <script>
 import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
 import apiConfig from '../apiConfig';
 
 export default {
     setup(){
         const page = ref(1);
+        const max_page = ref(0);
         const projects = ref([]);
+        const route = useRoute();
+
+        if(Number(route.query.page) > 0){
+            page.value = route.query.page;
+        }
 
         const fetchProjects = () => {
-            axios({
-                method: "get",
-                url: apiConfig.host + "/api/projects" + `?page=${page.value}`
-            }).then((e) => {
-                page.value = e.data.page.this;
-                projects.value = [];
+            if(page.value > 0) {
+                axios({
+                    method: "get",
+                    url: apiConfig.host + "/api/projects" + `?page=${page.value}`
+                }).then((e) => {
+                    page.value = e.data.page.this;
+                    max_page.value = e.data.page.max;
+                    projects.value = [];
 
-                e.data.projects.forEach(project => {
-                    projects.value.push({
-                        uuid: project.uuid,
-                        date: project.date,
-                        title: project.title,
-                        tag: project.tag
+                    e.data.projects.forEach(project => {
+                        projects.value.push({
+                            uuid: project.uuid,
+                            date: project.date,
+                            title: project.title,
+                            tag: project.tag
+                        });
                     });
+                }).catch((e) => {
+                    page.value -= 1;
+                    console.log(e);
                 });
-            }).catch((e) => {
-                alert("오류가 발생했습니다!");
-                console.log(e);
-            });
+            } else {
+                alert("이전 페이지가 없습니다.")
+                page.value = 1;
+            }
         }
 
         // 페이지 넘어가는거 체크
@@ -62,6 +77,7 @@ export default {
 
         return {
             page: page,
+            max_page: max_page,
             projects: projects
         }
     },

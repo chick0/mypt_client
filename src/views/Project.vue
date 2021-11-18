@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="py-2">
-            <router-link class="router-link" :to="{ name: 'AboutMe' }">← 뒤로 돌아가기</router-link>
+            <router-link class="router-link" :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
         </div>
 
         <h1 class="display-3">{{ project.title }}</h1>
@@ -62,7 +62,6 @@ export default {
             method: "get",
             url: apiConfig.host + "/api/project/" + uuid
         }).then((resp) => {
-            console.log(resp.data)
             project.value = {
                 "content": {
                     "a": marked.parse(resp.data.content.a),
@@ -90,6 +89,3 @@ export default {
     }
 }
 </script>
-
-<style>
-</style>
