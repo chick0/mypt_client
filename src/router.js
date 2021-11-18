@@ -10,6 +10,11 @@ const routes = [
         component: AboutMe,
     },
     {
+        path: "/contact",
+        name: "Contact",
+        component: () => import('./views/Contact.vue'),
+    },
+    {
         path: "/:uuid",
         name: "Project",
         component: () => import('./views/Project.vue'),
