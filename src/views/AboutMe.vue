@@ -1,15 +1,15 @@
 <template>
     <div class="container">
         <div class="py-3">
-            <h1 class="display-5">chick_0</h1>
+            <h1 class="display-2">chick_0</h1>
             <p >qwerty asdf jkl; / {{page}}</p>
         </div>
 
-        <h1 class="display-6">프로젝트</h1>
+        <h2>프로젝트</h2>
         <div v-for:="project in projects">
             <router-link :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
                 <div class="py-3">
-                    <h3>{{ project.title }}</h3>
+                    <h4>{{ project.title }}</h4>
                     <p class="lead">{{ project.date }}</p>
 
                     {{ project.tag }}
