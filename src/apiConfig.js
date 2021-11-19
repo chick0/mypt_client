@@ -1,3 +1,3 @@
 export default {
-    host: "http://127.0.0.1:19564"
+    host: "https://mypt.ch1ck.xyz"
 }
