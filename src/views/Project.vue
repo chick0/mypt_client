@@ -47,6 +47,7 @@ import apiConfig from '../apiConfig';
 export default {
     setup(){
         const route = useRoute();
+        const renderer = new marked.Renderer();
         const project = ref({});
         const uuid = route.params.uuid;
 
@@ -54,8 +55,11 @@ export default {
             location.href = "/";
         }
 
+        renderer.link = ( href, title, text ) => `<a class="btn-link" target="_blank" rel="noreferrer" href="${ href }">${ text }</a>`;
+
         marked.setOptions({
             gfm: true,
+            renderer: renderer
         });
 
         axios({
