@@ -8,12 +8,12 @@
         <p class="lead">{{ project.date }}</p>
 
         <ul class="list-group list-group-flush">
-            <li class="list-group-item" style="padding-left:0">
-                <span class="badge bg-dark" style="width:60px;margin-right:10px;">Github</span>
+            <li class="list-group-item">
+                <span class="badge bg-dark">Github</span>
                 <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github }}</a>
             </li>
-            <li class="list-group-item" style="padding-left:0">
-                <span class="badge bg-primary" style="width:60px;margin-right:10px;">Web</span>
+            <li class="list-group-item">
+                <span class="badge bg-primary">Web</span>
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
         </ul>
@@ -89,3 +89,13 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.list-group-item{
+    padding-left: 0;
+}
+.badge{
+    width: 60px;
+    margin-right: 10px;
+}
+</style>
