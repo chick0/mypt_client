@@ -1,9 +1,8 @@
 <template>
-    <div class="container">
-        <div class="py-2">
-            <router-link class="router-link" :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
-        </div>
-
+    <div class="container fixed-top bg-white py-3">
+        <router-link :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
+    </div>
+    <div class="container pt-5">
         <h1 class="display-3">{{ project.title }}</h1>
         <p class="lead">{{ project.date }}</p>
 
