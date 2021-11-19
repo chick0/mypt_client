@@ -7,7 +7,7 @@
 
         <h2>프로젝트</h2>
         <div v-for:="project in projects">
-            <router-link :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
+            <router-link class="pj" :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
                 <div class="py-3">
                     <h4>{{ project.title }}</h4>
                     <p class="lead">{{ project.date }}</p>
@@ -85,7 +85,11 @@ export default {
 </script>
 
 <style scoped>
-a {
+.pj {
     color: #000;
+    text-decoration: none;
+}
+.pj:hover {
+    color: rgb(20, 90, 220);
 }
 </style>
