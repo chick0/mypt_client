@@ -8,11 +8,6 @@ const routes = [
         component: () => import('./views/AboutMe.vue'),
     },
     {
-        path: "/contact",
-        name: "Contact",
-        component: () => import('./views/Contact.vue'),
-    },
-    {
         path: "/:uuid",
         name: "Project",
         component: () => import('./views/Project.vue'),
