@@ -28,7 +28,7 @@
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import axios from 'axios';
-import apiConfig from '../apiConfig';
+import config from '../config';
 
 export default {
     setup(){
@@ -45,7 +45,7 @@ export default {
             if(page.value > 0) {
                 axios({
                     method: "get",
-                    url: apiConfig.host + "/api/projects" + `?page=${page.value}`
+                    url: config.api.host + "/api/projects" + `?page=${page.value}`
                 }).then((e) => {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;

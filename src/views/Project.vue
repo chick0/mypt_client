@@ -41,7 +41,7 @@ import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { marked } from 'marked';
 import axios from 'axios';
-import apiConfig from '../apiConfig';
+import config from '../config';
 
 export default {
     setup(){
@@ -63,7 +63,7 @@ export default {
 
         axios({
             method: "get",
-            url: apiConfig.host + "/api/project/" + uuid
+            url: config.api.host + "/api/project/" + uuid
         }).then((resp) => {
             project.value = {
                 "content": {
