@@ -1,8 +1,12 @@
 <template>
     <div class="container">
         <div class="py-3">
-            <h1 class="display-2">chick_0</h1>
-            <p >qwerty asdf jkl; / {{page}}</p>
+            <h1 class="display-2">{{ about_me.name }}</h1>
+            <div>
+                <a class="btn btn-primary" :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
+            </div>
+
+            <div class="spinner-border text-muted"></div>
         </div>
 
         <h2>프로젝트</h2>
@@ -78,7 +82,8 @@ export default {
         return {
             page: page,
             max_page: max_page,
-            projects: projects
+            projects: projects,
+            about_me: config.about_me
         }
     },
 }
