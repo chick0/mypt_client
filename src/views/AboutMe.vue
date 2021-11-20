@@ -2,12 +2,19 @@
     <div class="container">
         <div class="py-3">
             <h1 class="display-2">{{ about_me.name }}</h1>
-            <div>
-                <a class="btn btn-primary" :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
-            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <span class="badge bg-dark">Github</span>
+                    <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
+                </li>
+                <li class="list-group-item">
+                    <span class="badge bg-primary">E-Mail</span>
+                    <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
+                </li>
+            </ul>
         </div>
 
-        <h2>프로젝트</h2>
+        <h2 class="pt-4">프로젝트</h2>
         <div v-for:="project in projects">
             <router-link class="pj" :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
                 <div class="py-3">
@@ -94,5 +101,13 @@ export default {
 }
 .pj:hover {
     color: rgb(20, 90, 220);
+}
+
+.list-group-item{
+    padding-left: 0;
+}
+.badge{
+    width: 60px;
+    margin-right: 10px;
 }
 </style>
