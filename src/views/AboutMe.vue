@@ -19,7 +19,7 @@
 
         <div class="row py-3 gap-1" v-if="max_page > page">
             <button class="col btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
-            <button id="nextBtn" class="col btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
+            <button class="col btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
         </div>
     </div>
 </template>
