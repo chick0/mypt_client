@@ -54,7 +54,7 @@ export default {
             location.href = "/";
         }
 
-        renderer.link = ( href, title, text ) => `<a class="btn-link" target="_blank" rel="noreferrer" href="${ href }">${ text }</a>`;
+        renderer.link = ( href, title, text ) => `<a target="_blank" rel="noreferrer" href="${ href }">${ text }</a>`;
 
         marked.setOptions({
             gfm: true,
