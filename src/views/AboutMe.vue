@@ -5,8 +5,6 @@
             <div>
                 <a class="btn btn-primary" :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
             </div>
-
-            <div class="spinner-border text-muted"></div>
         </div>
 
         <h2>프로젝트</h2>
