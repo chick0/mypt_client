@@ -70,7 +70,7 @@ export default {
                     });
                 }).catch((e) => {
                     page.value -= 1;
-                    console.log(e);
+                    alert(e.response.data.error.message);
                 });
             } else {
                 alert("이전 페이지가 없습니다.")
