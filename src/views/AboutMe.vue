@@ -26,7 +26,7 @@
             </router-link>
         </div>
 
-        <div class="row pt-3 gap-1" v-if="max_page > page">
+        <div class="row pt-3 gap-1" v-if="max_page != 1">
             <button class="col btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
             <button class="col btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
         </div>
