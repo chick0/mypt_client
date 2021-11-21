@@ -31,8 +31,6 @@
             <h2>느낀점</h2>
             <div v-html="project.content.c"></div>
         </div>
-
-        <p>{{ project.tag }}</p>
     </div>
 </template>
 
