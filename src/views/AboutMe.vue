@@ -16,7 +16,7 @@
 
         <h2 class="pt-4">프로젝트</h2>
         <div v-for:="project in projects">
-            <router-link class="pj" :to="{ name: 'Project', params: { uuid: project.uuid }, query: { page: page } }">
+            <router-link class="pj" :to="fetchUrl(project.uuid)">
                 <div class="py-3">
                     <h4>{{ project.title }}</h4>
                     <p class="lead">{{ project.date }}</p>
@@ -84,11 +84,27 @@ export default {
         // 페이지 불러오기
         fetchProjects();
 
+        const fetchUrl = uuid => {
+            let url = {
+                name: 'Project',
+                params: { 
+                    uuid: uuid
+                },
+                query: { 
+                    page: page.value
+                }
+            };
+
+            if(page.value == 1){ delete url.query; }
+            return url;
+        };
+
         return {
             page: page,
             max_page: max_page,
             projects: projects,
-            about_me: config.about_me
+            about_me: config.about_me,
+            fetchUrl: fetchUrl
         }
     },
 }
