@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="py-3">
-            <h1 class="display-2">{{ about_me.name }}</h1>
+            <h1 class="display-2"><img class="profile" src="../assets/100.png"> {{ about_me.name }}</h1>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <span class="badge bg-dark">Github</span>
@@ -103,4 +103,8 @@ export default {
     color: rgb(20, 90, 220);
 }
 
+.profile{
+    border-radius: 3rem;
+    width: 65px;
+}
 </style>
