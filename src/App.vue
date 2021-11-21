@@ -46,4 +46,12 @@ export default {
     left: 0;
     margin: auto;
 }
+
+.list-group-item{
+    padding-left: 0;
+}
+.badge{
+    width: 60px;
+    margin-right: 10px;
+}
 </style>

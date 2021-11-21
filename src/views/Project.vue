@@ -92,13 +92,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-.list-group-item{
-    padding-left: 0;
-}
-.badge{
-    width: 60px;
-    margin-right: 10px;
-}
-</style>

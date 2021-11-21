@@ -103,11 +103,4 @@ export default {
     color: rgb(20, 90, 220);
 }
 
-.list-group-item{
-    padding-left: 0;
-}
-.badge{
-    width: 60px;
-    margin-right: 10px;
-}
 </style>
