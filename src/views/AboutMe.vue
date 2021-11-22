@@ -46,11 +46,15 @@ export default {
         const projects = ref([]);
         const route = useRoute();
 
+        // 쿼리 스트링으로 받은 페이지 번호가 숫자이고 0보다 크면 적용
         if(Number(route.query.page) > 0){
             page.value = route.query.page;
         }
 
         const fetchProjects = () => {
+            // 프로젝트 목록 초기화해서 스크롤 상단 이동
+            projects.value = [];
+
             if(page.value > 0) {
                 axios({
                     method: "get",
@@ -58,8 +62,6 @@ export default {
                 }).then((e) => {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;
-                    projects.value = [];
-
                     e.data.projects.forEach(project => {
                         projects.value.push({
                             uuid: project.uuid,
@@ -95,6 +97,7 @@ export default {
                 }
             };
 
+            // 1페이지면 페이지 쿼리스트링 추가되는거 삭제
             if(page.value == 1){ delete url.query; }
             return url;
         };
