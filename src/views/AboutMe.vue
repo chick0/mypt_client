@@ -27,8 +27,8 @@
         </div>
 
         <div class="row pt-3 gap-1" v-if="max_page != 1">
-            <button class="col btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
-            <button class="col btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
+            <button class="col pg-l btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
+            <button class="col pg-r btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
         </div>
     </div>
 </template>
@@ -122,5 +122,13 @@ export default {
 .profile{
     border-radius: 3rem;
     width: 65px;
+}
+
+.pg-l{
+    margin-left: 5px;
+}
+
+.pg-r{
+    margin-right: 5px;
 }
 </style>
