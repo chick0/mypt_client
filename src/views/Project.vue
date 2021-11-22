@@ -45,7 +45,10 @@ export default {
     setup(){
         const route = useRoute();
         const renderer = new marked.Renderer();
-        const project = ref({});
+        const project = ref({
+            "content": { "a": "", "b": "", "c": "" },
+            "date": "", "github": "", "tag": "", "title": "", "web": ""
+        });
         const uuid = route.params.uuid;
 
         if(uuid.length != 36){
