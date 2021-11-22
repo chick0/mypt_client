@@ -42,7 +42,7 @@ import config from '../config';
 export default {
     setup(){
         const page = ref(1);
-        const max_page = ref(0);
+        const max_page = ref(1);
         const projects = ref([]);
         const route = useRoute();
 
@@ -69,7 +69,7 @@ export default {
                         });
                     });
                 }).catch((e) => {
-                    page.value -= 1;
+                    page.value = max_page.value;
                     alert(e.response.data.error.message);
                 });
             } else {
