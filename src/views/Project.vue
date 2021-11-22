@@ -7,11 +7,11 @@
         <p class="lead">{{ project.date }}</p>
 
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">
+            <li class="list-group-item" v-if="checkLength(project.github)">
                 <span class="badge bg-dark">Github</span>
                 <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github }}</a>
             </li>
-            <li class="list-group-item">
+            <li class="list-group-item" v-if="checkLength(project.web)">
                 <span class="badge bg-primary">Web</span>
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
@@ -84,8 +84,21 @@ export default {
             console.log(e);
         });
 
+        const checkLength = text => {
+            if(text == null){
+                return false;
+            }
+            else if(text.length == 0){
+                return false;
+            }
+            else{
+                return true;
+            }
+        };
+
         return {
-            project: project
+            project: project,
+            checkLength: checkLength
         }
     }
 }
