@@ -52,9 +52,6 @@ export default {
         }
 
         const fetchProjects = () => {
-            // 프로젝트 목록 초기화해서 스크롤 상단 이동
-            projects.value = [];
-
             if(page.value > 0) {
                 axios({
                     method: "get",
@@ -62,6 +59,8 @@ export default {
                 }).then((e) => {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;
+                    projects.value = [];
+
                     e.data.projects.forEach(project => {
                         projects.value.push({
                             uuid: project.uuid,
@@ -70,6 +69,9 @@ export default {
                             tag: project.tag
                         });
                     });
+
+                    // 화면 스크롤 위로 올리기
+                    window.scrollTo(0, 0);
                 }).catch((e) => {
                     page.value = max_page.value;
                     alert(e.response.data.error.message);

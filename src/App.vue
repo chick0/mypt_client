@@ -1,6 +1,8 @@
 <template>
 
-    <div class="spinner spinner-border text-primary" tabindex="-1" v-if="spinner == true"></div>
+    <div class="spinner" tabindex="-1" v-if="spinner == true">
+        <div class="spinner-border text-primary"></div>
+    </div>
     <router-view />
     <div class="py-5"></div>
 
@@ -38,13 +40,15 @@ export default {
 
 <style>
 .spinner {
-    display: block;
-    position: absolute;
+    position: fixed;
     top: 0;
+    left: 0;
     right: 0;
     bottom: 0;
-    left: 0;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .list-group-item{
