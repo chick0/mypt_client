@@ -2,7 +2,7 @@
     <div class="container fixed-top bg-white py-3">
         <router-link :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
     </div>
-    <div class="container mt-3 pt-5">
+    <div class="container mt-3 pt-5" v-if="projectLoad == true">
         <h1 class="display-3">{{ project.title }}</h1>
         <p class="lead">{{ project.date }}</p>
 
@@ -43,18 +43,20 @@ import config from '../config';
 
 export default {
     setup(){
-        const route = useRoute();
-        const renderer = new marked.Renderer();
+        const projectLoad = ref(false);
         const project = ref({
             "content": { "a": "", "b": "", "c": "" },
             "date": "", "github": "", "tag": "", "title": "", "web": ""
         });
+
+        const route = useRoute();
         const uuid = route.params.uuid;
 
         if(uuid.length != 36){
             location.href = "/";
         }
 
+        const renderer = new marked.Renderer();
         renderer.link = ( href, title, text ) => `<a target="_blank" rel="noreferrer" href="${ href }">${ text }</a>`;
 
         marked.setOptions({
@@ -66,6 +68,7 @@ export default {
             method: "get",
             url: config.api.host + "/api/project/" + uuid
         }).then((resp) => {
+            projectLoad.value = true;
             project.value = {
                 "content": {
                     "a": marked.parse(resp.data.content.a),
@@ -101,6 +104,7 @@ export default {
 
         return {
             project: project,
+            projectLoad: projectLoad,
             checkLength: checkLength
         }
     }
