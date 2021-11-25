@@ -9,7 +9,7 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item" v-if="checkLength(project.github)">
                 <span class="badge bg-dark">Github</span>
-                <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github }}</a>
+                <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github_preview }}</a>
             </li>
             <li class="list-group-item" v-if="checkLength(project.web)">
                 <span class="badge bg-primary">Web</span>
@@ -45,8 +45,17 @@ export default {
     setup(){
         const projectLoad = ref(false);
         const project = ref({
-            "content": { "a": "", "b": "", "c": "" },
-            "date": "", "github": "", "tag": "", "title": "", "web": ""
+            content: {
+                a: "", 
+                b: "",
+                c: ""
+            },
+            date: "", 
+            github: "",
+            github_preview: "",
+            tag: "",
+            title: "", 
+            web: ""
         });
 
         const route = useRoute();
@@ -68,19 +77,19 @@ export default {
             method: "get",
             url: config.api.host + "/api/project/" + uuid
         }).then((resp) => {
+            // API에서 불러온 데이터 적용
+            Object.assign(project.value, resp.data);
+
+            // 마크다운만 렌더링해서 다시 적용
+            const content = resp.data.content;
+            project.value.content = {
+                a: marked.parse(content.a),
+                b: marked.parse(content.b),
+                c: marked.parse(content.c),
+            }
+
+            // 프로젝트 로딩 완료
             projectLoad.value = true;
-            project.value = {
-                "content": {
-                    "a": marked.parse(resp.data.content.a),
-                    "b": marked.parse(resp.data.content.b),
-                    "c": marked.parse(resp.data.content.c)
-                },
-                "date": resp.data.date,
-                "github": resp.data.github,
-                "tag": resp.data.tag,
-                "title": resp.data.title,
-                "web": resp.data.web
-            };
         }).catch((e) => {
             if(e.response.status == 404){
                 location.href = "/";
