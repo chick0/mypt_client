@@ -8,7 +8,7 @@
                     <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
                 </li>
                 <li class="list-group-item">
-                    <span class="badge bg-primary">E-Mail</span>
+                    <span class="badge badge-title bg-primary">E-Mail</span>
                     <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
                 </li>
             </ul>
