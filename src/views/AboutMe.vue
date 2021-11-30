@@ -60,18 +60,7 @@ export default {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;
                     projects.value = [];
-
-                    e.data.projects.forEach(project => {
-                        projects.value.push({
-                            uuid: project.uuid,
-                            date: project.date,
-                            title: project.title,
-                            tag: project.tag
-                        });
-                    });
-
-                    // 화면 스크롤 위로 올리기
-                    window.scrollTo(0, 0);
+                    Object.assign(projects.value, e.data.projects);
                 }).catch((e) => {
                     page.value = max_page.value;
                     alert(e.response.data.error.message);
