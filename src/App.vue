@@ -54,7 +54,7 @@ export default {
 .list-group-item{
     padding-left: 0;
 }
-.badge{
+.badge-title{
     width: 60px;
     margin-right: 10px;
 }

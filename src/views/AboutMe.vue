@@ -4,7 +4,7 @@
             <h1 class="display-2"><img class="profile" src="../assets/100.png"> {{ about_me.name }}</h1>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <span class="badge bg-dark">Github</span>
+                    <span class="badge badge-title bg-dark">Github</span>
                     <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
                 </li>
                 <li class="list-group-item">
