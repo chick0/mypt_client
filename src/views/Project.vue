@@ -1,37 +1,40 @@
 <template>
-    <div class="container fixed-top bg-white py-3">
+    <section class="fixed-top">
         <router-link :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
-    </div>
-    <div class="container mt-3 pt-5" v-if="projectLoad == true">
-        <h1 class="display-3">{{ project.title }}</h1>
-        <p class="lead">{{ project.date }}</p>
+    </section>
 
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item" v-if="checkLength(project.github)">
-                <span class="badge badge-title bg-dark">Github</span>
+    <section class="head" v-if="projectLoad == true">
+        <h1 class="title one" id="top">{{ project.title }}</h1>
+        <p class="date">{{ project.date }}</p>
+
+        <ul class="list">
+            <li class="item" v-if="checkLength(project.github)">
+                <span class="badge dark">Github</span>
                 <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github_preview }}</a>
             </li>
-            <li class="list-group-item" v-if="checkLength(project.web)">
-                <span class="badge badge-title bg-primary">Web</span>
+            <li class="item" v-if="checkLength(project.web)">
+                <span class="badge primary">Web</span>
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
         </ul>
+    </section>
 
-        <div class="py-3">
-            <h2>기획의도</h2>
+    <section class="body" v-if="projectLoad == true">
+        <div class="pad">
+            <h2 class="title two">기획의도</h2>
             <div v-html="project.content.a"></div>
         </div>
 
-        <div class="py-3">
-            <h2>특징</h2>
+        <div class="pad">
+            <h2 class="title two">특징</h2>
             <div v-html="project.content.b"></div>
         </div>
 
-        <div class="py-3">
-            <h2>느낀점</h2>
+        <div class="pad">
+            <h2 class="title two">느낀점</h2>
             <div v-html="project.content.c"></div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -119,3 +122,38 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+/* fixed-top */
+.fixed-top {
+    display: flex;
+    position: fixed;
+
+    border: #fff solid 5px;
+    border-radius: .25rem;
+
+    background-color: rgb(255, 255, 255) !important;
+    z-index: 10;
+}
+
+/* Head */
+.head {
+    padding-top: 20px;
+}
+
+.head > .date {
+    font-size: 20px;
+    margin-top: 0;
+}
+
+.head > .list > .item > .badge {
+    width: 50px !important;
+    margin-right: 10px !important;
+}
+
+/* Body */
+.body > .pad {
+    padding-top: 15px;
+    padding-bottom: 30px;
+}
+</style>
