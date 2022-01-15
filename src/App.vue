@@ -2,6 +2,7 @@
 
     <div class="spinner" tabindex="-1" v-if="spinner == true">
     </div>
+
     <router-view />
 
 </template>
@@ -37,14 +38,17 @@ export default {
 
 <style>
 /* Fonts */
-@font-face {
-    font-family: 'Noto Sans KR';
-    font-style: normal;
-    font-weight: 400;
-    font-display: fallback;
-    src: local('Noto Sans KR Regular'), local('NotoSansKR-Regular'),
-         url('/fonts/noto-sans-kr-v12-latin_korean-regular.woff2') format('woff2'),
-         url('/fonts/noto-sans-kr-v12-latin_korean-regular.woff') format('woff');
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* A */
+a {
+    text-decoration: none;
+    color: rgb(0, 110, 255) !important;
+}
+a :hover{
+    text-decoration: none;
 }
 
 /* Section */
@@ -59,5 +63,66 @@ section {
         margin-left: 20%;
         margin-right: 20%;
     }
+}
+
+/* List */
+.list {
+	display: flex;
+	flex-direction: column;
+	padding-left: 0;
+	margin-bottom: 0;
+    border-radius: 0;
+}
+.list > .item :first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    border-top-left-radius: inherit;
+}
+.list > .item {
+	position: relative;
+	display: block;
+
+    padding: .5rem 1rem;
+    padding-left: 0;
+
+	text-decoration: none;
+}
+
+/* Badge !important */
+.badge {
+	display: inline-block !important;
+	padding: .35em .65em !important;
+	font-size: .75em !important;
+	font-weight: 700 !important;
+    text-align: center !important;
+    vertical-align: center !important;
+	white-space: nowrap !important;
+	border-radius: .25rem !important;
+}
+.badge.primary{
+    color: #FFF !important;
+    background-color: rgb(0, 110, 255) !important;
+}
+.badge.dark{
+    color: #FFF !important;
+    background-color: #333 !important;
+}
+
+/* Titles */
+.title{
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.title.one {
+    font-size: 60px;
+    font-weight: 150;
+}
+.title.two {
+    font-size: 45px;
+    font-weight: 290;
+}
+.title.three{
+    font-size: 35px;
+    font-weight: 400;
 }
 </style>
