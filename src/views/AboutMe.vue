@@ -1,36 +1,36 @@
 <template>
-    <div class="container">
-        <div class="py-3">
-            <h1 class="display-2"><img class="profile" src="../assets/100.png"> {{ about_me.name }}</h1>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <span class="badge badge-title bg-dark">Github</span>
-                    <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
-                </li>
-                <li class="list-group-item">
-                    <span class="badge badge-title bg-primary">E-Mail</span>
-                    <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
-                </li>
-            </ul>
-        </div>
+    <section class="aboutme">
+        <h1 class="name">{{ about_me.name }}</h1>
 
-        <h2 class="pt-4">프로젝트</h2>
-        <div v-for:="project in projects">
-            <router-link class="pj" :to="fetchUrl(project.uuid)">
-                <div class="py-3">
-                    <h4>{{ project.title }}</h4>
-                    <p class="lead">{{ project.date }}</p>
+        <ul class="list">
+            <li class="item">
+                <span class="badge dark">Github</span>
+                <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
+            </li>
+            <li class="item">
+                <span class="badge primary">E-Mail</span>
+                <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
+            </li>
+        </ul>
+    </section>
 
-                    {{ project.tag }}
-                </div>
-            </router-link>
-        </div>
+    <section class="projects">
+        <h2 class="title two">프로젝트</h2>
 
-        <div class="row pt-3 gap-1" v-if="max_page != 1">
-            <button class="col pg-l btn btn-outline-primary btn-lg" @click="page -= 1">← 이전 페이지</button>
-            <button class="col pg-r btn btn-outline-primary btn-lg" @click="page += 1">→ 다음 페이지</button>
+        <router-link class="project" v-for:="project in projects" :to="fetchUrl(project.uuid)">
+            <h3 class="title three">{{ project.title }}</h3>
+            <div class="tagbox">
+                {{ project.tag }}
+            </div>
+
+            <p class="date">{{ project.date }}</p>
+        </router-link>
+
+        <div class="" v-if="max_page != 1">
+            <button class="" @click="page -= 1">← 이전 페이지</button>
+            <button class="" @click="page += 1">→ 다음 페이지</button>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>
@@ -109,24 +109,40 @@ export default {
 </script>
 
 <style scoped>
-.pj {
-    color: #000;
-    text-decoration: none;
-}
-.pj:hover {
-    color: rgb(20, 90, 220);
-}
-
-.profile{
-    border-radius: 3rem;
-    width: 65px;
+/* About Me */
+.aboutme {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 30px;
 }
 
-.pg-l{
-    margin-left: 5px;
+.aboutme > .name {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 60px;
+    font-weight: 150;
+    vertical-align: middle;
 }
 
-.pg-r{
-    margin-right: 5px;
+.aboutme > .list > .item > .badge {
+    width: 50px !important;
+    margin-right: 10px !important;
+}
+
+/* Projects */
+.projects > .project{
+    display: block;
+    color: #000 !important;
+
+    padding-bottom: 15px;
+}
+
+.projects > .project > .tagbox {
+    font-size: 20px;
+}
+
+.projects > .project > .date {
+    font-size: 16px;
+    margin: 0;
 }
 </style>
