@@ -123,6 +123,6 @@ section {
 }
 .title.three{
     font-size: 35px;
-    font-weight: 400;
+    font-weight: 200;
 }
 </style>
