@@ -38,6 +38,17 @@ export default {
 </script>
 
 <style>
+/* Fonts */
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    font-display: fallback;
+    src: local('Noto Sans KR Regular'), local('NotoSansKR-Regular'),
+         url('/fonts/noto-sans-kr-v12-latin_korean-regular.woff2') format('woff2'),
+         url('/fonts/noto-sans-kr-v12-latin_korean-regular.woff') format('woff');
+}
+
 .spinner {
     position: fixed;
     top: 0;
