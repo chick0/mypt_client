@@ -75,7 +75,7 @@ export default {
         watch(page, fetchProjects);
         watch(page, () => {
             // `프로젝트` 텍스트 위치로 스크롤 이동
-            document.querySelector("h2.pt-4").scrollIntoView();
+            document.querySelector(".projects").scrollIntoView();
         });
 
         // 페이지 불러오기
