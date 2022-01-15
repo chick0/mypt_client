@@ -25,11 +25,11 @@
 
             <p class="date">{{ project.date }}</p>
         </router-link>
+    </section>
 
-        <div class="" v-if="max_page != 1">
-            <button class="" @click="page -= 1">← 이전 페이지</button>
-            <button class="" @click="page += 1">→ 다음 페이지</button>
-        </div>
+    <section class="page" v-if="max_page != 1">
+        <button class="button" @click="page -= 1">← 이전 페이지</button>
+        <button class="button" @click="page += 1">다음 페이지 →</button>
     </section>
 </template>
 
@@ -145,4 +145,20 @@ export default {
     font-size: 16px;
     margin: 0;
 }
+
+/* Page */
+.page {
+    display: flex;
+    text-align: center;
+
+    padding-top: 30px;
+    padding-bottom: 45px;
+}
+.page > .button {
+    flex: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
 </style>

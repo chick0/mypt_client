@@ -43,9 +43,13 @@ body {
 }
 
 /* A */
+:root {
+  --a-color: rgb(0, 110, 255);
+}
+
 a {
     text-decoration: none;
-    color: rgb(0, 110, 255) !important;
+    color: var(--a-color) !important;
 }
 a :hover{
     text-decoration: none;
@@ -125,4 +129,24 @@ section {
     font-size: 35px;
     font-weight: 200;
 }
+
+/* Button */
+.button {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+
+    color: #FFF;
+    background-color: var(--a-color);
+
+    border: currentColor solid 1px;
+    border-radius: .5rem; 
+}
+.button:hover{
+    color: var(--a-color);
+    background-color: #FFF;
+}
+
 </style>
