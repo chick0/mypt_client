@@ -1,10 +1,6 @@
 <template>
 
-    <div class="spinner" tabindex="-1" v-if="spinner == true">
-        <div class="spinner-border text-primary"></div>
-    </div>
     <router-view />
-    <div class="py-5"></div>
 
 </template>
 
