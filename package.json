@@ -12,6 +12,7 @@
         "core-js": "^3.6.5",
         "marked": "^4.0.10",
         "vue": "^3.2.26",
+        "vue-loading-overlay": "^5.0",
         "vue-router": "^4.0.12"
     },
     "devDependencies": {
