@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import "bootstrap/dist/css/bootstrap.min.css";
 import { ref } from 'vue';
 import axios from 'axios';
 
