@@ -1,5 +1,7 @@
 <template>
 
+    <div class="spinner" tabindex="-1" v-if="spinner == true">
+    </div>
     <router-view />
 
 </template>
@@ -45,23 +47,17 @@ export default {
          url('/fonts/noto-sans-kr-v12-latin_korean-regular.woff') format('woff');
 }
 
-.spinner {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+/* Section */
+section {
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.list-group-item{
-    padding-left: 0;
-}
-.badge-title{
-    width: 60px;
-    margin-right: 10px;
+@media (min-width: 700px) {
+    section {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }
 </style>
