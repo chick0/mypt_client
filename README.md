@@ -1,24 +1,6 @@
-# ch1ck.xyz
+# client-side
+This is **Vue Client** for my **[Portfolio](https://ch1ck.xyz)**!
 
-## Project setup
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Links
+* api-side: [chick0/mypt_api](https://github.com/chick0/mypt_api)
+* client-side: [chick0/mypt_client](https://github.com/chick0/mypt_client)
