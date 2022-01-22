@@ -93,6 +93,22 @@ export default {
 
             // 프로젝트 로딩 완료
             projectLoad.value = true;
+
+            if(project.value.title.includes("[작성중]")){
+                if(
+                    confirm("[경고]\n" + 
+                            "* 해당 프로젝트의 설명은 작성 중입니다.\n" +
+                            "* 메인 페이지로 이동하시겠습니까?")
+                ){
+                    const page = route.query.page;
+
+                    if(page == undefined || Number(page) < 1){
+                        location.href = "/";
+                    } else {
+                        location.href = `/?page=${page}`;
+                    }
+                }
+            }
         }).catch((e) => {
             if(e.response.status == 404){
                 location.href = "/";
