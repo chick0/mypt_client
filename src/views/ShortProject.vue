@@ -11,6 +11,7 @@ import { useRoute, useRouter } from 'vue-router';
 export default {
     setup(){
         const route = useRoute();
+        const router = useRouter();
         const uuid = route.params.uuid;
         const page = route.query.page;
 
@@ -19,7 +20,6 @@ export default {
             router.push({ name: "AboutMe" });
         }
 
-        const router = useRouter();
         router.push({
             name: "Project",
             params: {
