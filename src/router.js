@@ -7,6 +7,7 @@ const routes = [
         name: "AboutMe",
         component: () => import('./views/AboutMe.vue'),
     },
+    // Project
     {
         path: "/project/:uuid",
         name: "Project",
