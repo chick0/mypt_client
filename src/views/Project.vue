@@ -39,13 +39,14 @@
 
 <script>
 import { ref } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { marked } from 'marked';
 import axios from 'axios';
 import config from '../config';
 
 export default {
     setup(){
+        const router = useRouter();
         const projectLoad = ref(false);
         const project = ref({
             content: {
@@ -65,7 +66,7 @@ export default {
         const uuid = route.params.uuid;
 
         if(uuid.length != 36){
-            location.href = "/";
+            router.push({ name: "AboutMe" });
         }
 
         const renderer = new marked.Renderer();
@@ -103,15 +104,18 @@ export default {
                     const page = route.query.page;
 
                     if(page == undefined || Number(page) < 1){
-                        location.href = "/";
+                        router.push({ name: "AboutMe" });
                     } else {
-                        location.href = `/?page=${page}`;
+                        router.push({
+                            name: "AboutMe",
+                            page: page
+                        });
                     }
                 }
             }
         }).catch((e) => {
             if(e.response.status == 404){
-                location.href = "/";
+                router.push({ name: "AboutMe" });
             }
 
             alert("오류가 발생했습니다!");
