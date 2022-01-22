@@ -17,6 +17,12 @@
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
         </ul>
+
+        <div class="tagbox">
+            <router-link class="tag badge dark" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
+                # {{ tag }}
+            </router-link>
+        </div>
     </section>
 
     <section class="body" v-if="projectLoad == true">
@@ -168,6 +174,18 @@ export default {
     width: 50px !important;
     margin-right: 10px !important;
 }
+
+/* TagBox */
+.head > .tagbox {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.head > .tagbox > .tag {
+    margin-right: 5px;
+}
+
+
 
 /* Body */
 .body > .pad {
