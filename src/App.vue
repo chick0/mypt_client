@@ -48,19 +48,20 @@ export default {
 </script>
 
 <style>
+/* Color */
+:root {
+  --blue: rgb(0, 110, 255);
+}
+
 /* Fonts */
 body {
     font-family: 'Noto Sans', sans-serif;
 }
 
 /* A */
-:root {
-  --a-color: rgb(0, 110, 255);
-}
-
 a {
     text-decoration: none;
-    color: var(--a-color) !important;
+    color: var(--blue) !important;
 }
 a :hover{
     text-decoration: none;
@@ -116,7 +117,7 @@ section {
 }
 .badge.primary{
     color: #FFF !important;
-    background-color: rgb(0, 110, 255) !important;
+    background-color: var(--blue) !important;
 }
 .badge.dark{
     color: #FFF !important;
@@ -150,13 +151,13 @@ section {
     padding-right: 25px;
 
     color: #FFF;
-    background-color: var(--a-color);
+    background-color: var(--blue);
 
-    border: currentColor solid 1px;
+    border: var(--blue) solid 1px;
     border-radius: .39rem;
 }
 .button:hover{
-    color: var(--a-color);
+    color: var(--blue);
     background-color: #FFF;
 }
 
