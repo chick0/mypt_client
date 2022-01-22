@@ -24,6 +24,8 @@ export default {
             name: "Project",
             params: {
                 uuid: uuid,
+            },
+            query: {
                 page: page
             }
         });
