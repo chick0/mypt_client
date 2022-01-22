@@ -147,8 +147,8 @@ section {
     display: inline-block;
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 20px;
+    padding-right: 20px;
 
     color: #FFF;
     background-color: var(--blue);
