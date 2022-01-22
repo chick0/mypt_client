@@ -1,20 +1,5 @@
 <template>
-    <section class="aboutme">
-        <h1 class="name">{{ about_me.name }}</h1>
-
-        <ul class="list">
-            <li class="item">
-                <span class="badge dark">Github</span>
-                <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
-            </li>
-            <li class="item">
-                <span class="badge primary">E-Mail</span>
-                <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
-            </li>
-        </ul>
-    </section>
-
-    <section class="projects">
+    <div class="projects">
         <h2 class="title two">프로젝트</h2>
 
         <router-link class="project" v-for:="project in projects" :to="fetchUrl(project.uuid)">
@@ -27,12 +12,12 @@
 
             <p class="date">{{ project.date }}</p>
         </router-link>
-    </section>
+    </div>
 
-    <section class="page" v-if="max_page != 1">
+    <div class="page" v-if="max_page != 1">
         <button class="button" @click="page -= 1">← 이전 페이지</button>
         <button class="button" @click="page += 1">다음 페이지 →</button>
-    </section>
+    </div>
 </template>
 
 <script>
@@ -42,7 +27,11 @@ import axios from 'axios';
 import config from '../config';
 
 export default {
-    setup(){
+    name: "Projects",
+    props: {
+        path: String,
+    },
+    setup(props){
         const page = ref(1);
         const max_page = ref(1);
         const projects = ref([]);
@@ -53,11 +42,21 @@ export default {
             page.value = route.query.page;
         }
 
+        // 프로젝트 불러올 함수
         const fetchProjects = () => {
+            let url = config.api.host + props.path;
+            if(!url.includes("page=")){
+                if(url.includes("?")){
+                   url += `&page=${page.value}`;
+                } else {
+                    url += `?page=${page.value}`;
+                }
+            } console.log(url);
+
             if(page.value > 0) {
                 axios({
                     method: "GET",
-                    url: config.api.host + `/api/projects?page=${page.value}`
+                    url: url
                 }).then((e) => {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;
@@ -83,6 +82,7 @@ export default {
         // 페이지 불러오기
         fetchProjects();
 
+        // :to 링크 생성기
         const fetchUrl = uuid => {
             let url = {
                 name: 'Project',
@@ -103,34 +103,13 @@ export default {
             page: page,
             max_page: max_page,
             projects: projects,
-            about_me: config.about_me,
-            fetchUrl: fetchUrl
+            fetchUrl: fetchUrl,
         }
     },
 }
 </script>
 
 <style scoped>
-/* About Me */
-.aboutme {
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-top: 30px;
-}
-
-.aboutme > .name {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 60px;
-    font-weight: 150;
-    vertical-align: middle;
-}
-
-.aboutme > .list > .item > .badge {
-    width: 50px !important;
-    margin-right: 10px !important;
-}
-
 /* Projects */
 .projects > .project{
     display: block;

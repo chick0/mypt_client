@@ -7,6 +7,15 @@ const routes = [
         name: "AboutMe",
         component: () => import('./views/AboutMe.vue'),
     },
+
+    // Tag 
+    {
+        path: "/tag/:tag(.*)*", // 한글 인식 이슈
+        name: "Tag",
+        component: () => import('./views/Tag.vue'),
+        props: true
+    },
+
     // Project
     {
         path: "/project/:uuid",
