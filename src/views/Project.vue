@@ -9,11 +9,11 @@
 
         <ul class="list">
             <li class="item" v-if="checkLength(project.github)">
-                <span class="badge dark">Github</span>
+                <span class="badge dark big">Github</span>
                 <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github_preview }}</a>
             </li>
             <li class="item" v-if="checkLength(project.web)">
-                <span class="badge primary">Web</span>
+                <span class="badge primary big">Web</span>
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
         </ul>

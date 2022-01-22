@@ -4,11 +4,11 @@
 
         <ul class="list">
             <li class="item">
-                <span class="badge dark">Github</span>
+                <span class="badge dark big">Github</span>
                 <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
             </li>
             <li class="item">
-                <span class="badge primary">E-Mail</span>
+                <span class="badge primary big">E-Mail</span>
                 <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
             </li>
         </ul>

@@ -114,7 +114,6 @@ section {
 	display: inline-block !important;
 	padding: .35em .65em !important;
 	font-size: .75em !important;
-	font-weight: 700 !important;
     text-align: center !important;
     vertical-align: center !important;
 	white-space: nowrap !important;
@@ -127,6 +126,11 @@ section {
 .badge.dark{
     color: #FFF !important;
     background-color: #333 !important;
+}
+
+.badge.big{
+    font-size: 17px !important;
+    font-weight: 680 !important;
 }
 
 /* Titles */
