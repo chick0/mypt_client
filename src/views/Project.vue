@@ -142,11 +142,14 @@ export default {
 <style scoped>
 /* fixed-top */
 .fixed-top {
-    display: flex;
     position: fixed;
 
-    border: #fff solid 5px;
-    border-radius: .25rem;
+    top: 0; 
+    left: 0;
+    width: 100%;
+
+    padding-top: 20px;
+    padding-bottom: 10px;
 
     background-color: #fff !important;
     z-index: 10;
@@ -154,7 +157,7 @@ export default {
 
 /* Head */
 .head {
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .head > .date {
