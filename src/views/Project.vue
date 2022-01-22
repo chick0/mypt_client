@@ -113,12 +113,8 @@ export default {
                 }
             }
         }).catch((e) => {
-            if(e.response.status == 404){
-                router.push({ name: "AboutMe" });
-            }
-
-            alert("오류가 발생했습니다!");
-            console.log(e);
+            alert(e.response.data.error.message);
+            router.push({ name: "AboutMe" });
         });
 
         const checkLength = text => {
