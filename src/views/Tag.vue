@@ -5,7 +5,7 @@
 
     <section class="head">
         <h1 class="title one">태그 검색</h1>
-        <p><b class="badge primary">{{ tag }}</b> 태그를 가지고 있는 프로젝트를 확인하고 있습니다.</p>
+        <p class="text"><span class="badge primary"># {{ tag }}</span> (와)과 관련된 프로젝트를 확인하고 있습니다.</p>
     </section>
 
     <section>
@@ -91,5 +91,12 @@ export default {
 /* Head */
 .head {
     padding-top: 40px;
+}
+
+.head > .text {
+    font-size: 26px;
+    font-weight: 200 !important;
+
+    margin-top: -10px;
 }
 </style>

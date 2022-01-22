@@ -6,7 +6,7 @@
             <h3 class="title three">{{ project.title }}</h3>
             <div class="tagbox">
                 <router-link class="tag badge dark" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
-                    {{ tag }}
+                    # {{ tag }}
                 </router-link>
             </div>
 
