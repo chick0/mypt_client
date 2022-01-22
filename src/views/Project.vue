@@ -78,8 +78,8 @@ export default {
         });
 
         axios({
-            method: "get",
-            url: config.api.host + "/api/project/" + uuid
+            method: "GET",
+            url: config.api.host + `/api/project/${uuid}`
         }).then((resp) => {
             // API에서 불러온 데이터 적용
             Object.assign(project.value, resp.data);
