@@ -134,6 +134,7 @@ export default {
     display: block;
     color: #000 !important;
 
+    padding-top: 3px;
     padding-bottom: 15px;
 }
 
