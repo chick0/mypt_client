@@ -1,6 +1,6 @@
 <template>
     <section class="aboutme">
-        <h1 class="name">{{ about_me.name }}</h1>
+        <h1 class="title one">{{ about_me.name }}</h1>
 
         <ul class="list">
             <li class="item">
@@ -43,14 +43,6 @@ export default {
     margin-top: 0;
     margin-bottom: 0;
     padding-top: 30px;
-}
-
-.aboutme > .name {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-size: 60px;
-    font-weight: 150;
-    vertical-align: middle;
 }
 
 .aboutme > .list > .item > .badge {
