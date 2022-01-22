@@ -14,97 +14,24 @@
         </ul>
     </section>
 
-    <section class="projects">
-        <h2 class="title two">프로젝트</h2>
-
-        <router-link class="project" v-for:="project in projects" :to="fetchUrl(project.uuid)">
-            <h3 class="title three">{{ project.title }}</h3>
-            <div class="tagbox">
-                <router-link class="tag badge dark" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
-                    {{ tag }}
-                </router-link>
-            </div>
-
-            <p class="date">{{ project.date }}</p>
-        </router-link>
-    </section>
-
-    <section class="page" v-if="max_page != 1">
-        <button class="button" @click="page -= 1">← 이전 페이지</button>
-        <button class="button" @click="page += 1">다음 페이지 →</button>
+    <section>
+        <Projects :path="path"></Projects>
     </section>
 </template>
 
 <script>
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import axios from 'axios';
 import config from '../config';
 
+import Projects from '@/component/Projects.vue';
+
 export default {
+    components: {
+        Projects
+    },
     setup(){
-        const page = ref(1);
-        const max_page = ref(1);
-        const projects = ref([]);
-        const route = useRoute();
-
-        // 쿼리 스트링으로 받은 페이지 번호가 숫자이고 0보다 크면 적용
-        if(Number(route.query.page) > 0){
-            page.value = route.query.page;
-        }
-
-        const fetchProjects = () => {
-            if(page.value > 0) {
-                axios({
-                    method: "GET",
-                    url: config.api.host + `/api/projects?page=${page.value}`
-                }).then((e) => {
-                    page.value = e.data.page.this;
-                    max_page.value = e.data.page.max;
-                    projects.value = [];
-                    Object.assign(projects.value, e.data.projects);
-                }).catch((e) => {
-                    page.value = max_page.value;
-                    alert(e.response.data.error.message);
-                });
-            } else {
-                alert("이전 페이지가 없습니다.")
-                page.value = 1;
-            }
-        }
-
-        // 페이지 넘어가는거 체크
-        watch(page, fetchProjects);
-        watch(page, () => {
-            // `프로젝트` 텍스트 위치로 스크롤 이동
-            document.querySelector(".projects").scrollIntoView();
-        });
-
-        // 페이지 불러오기
-        fetchProjects();
-
-        const fetchUrl = uuid => {
-            let url = {
-                name: 'Project',
-                params: { 
-                    uuid: uuid
-                },
-                query: { 
-                    page: page.value
-                }
-            };
-
-            // 1페이지면 페이지 쿼리스트링 추가되는거 삭제
-            if(page.value == 1){ delete url.query; }
-            return url;
-        };
-
         return {
-            page: page,
-            max_page: max_page,
-            projects: projects,
             about_me: config.about_me,
-            fetchUrl: fetchUrl
+            path: "/api/projects"
         }
     },
 }
