@@ -22,17 +22,17 @@
     <section class="body" v-if="projectLoad == true">
         <div class="pad">
             <h2 class="title two">기획의도</h2>
-            <div v-html="project.content.a"></div>
+            <div class="content" v-html="project.content.a"></div>
         </div>
 
         <div class="pad">
             <h2 class="title two">특징</h2>
-            <div v-html="project.content.b"></div>
+            <div class="content" v-html="project.content.b"></div>
         </div>
 
         <div class="pad">
             <h2 class="title two">느낀점</h2>
-            <div v-html="project.content.c"></div>
+            <div class="content" v-html="project.content.c"></div>
         </div>
     </section>
 </template>
@@ -171,5 +171,10 @@ export default {
 .body > .pad {
     padding-top: 15px;
     padding-bottom: 30px;
+}
+
+.body > .pad > .content {
+    font-size: 16px;
+    line-height: 26px;
 }
 </style>
