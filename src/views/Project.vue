@@ -132,7 +132,7 @@ export default {
     border: #fff solid 5px;
     border-radius: .25rem;
 
-    background-color: rgb(255, 255, 255) !important;
+    background-color: #fff !important;
     z-index: 10;
 }
 
