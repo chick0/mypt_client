@@ -137,6 +137,10 @@ export default {
     padding-bottom: 15px;
 }
 
+.projects > .project:hover{
+    background-color: var(--hover);
+}
+
 .projects > .project > .tagbox {
     font-size: 20px;
 }
@@ -160,5 +164,4 @@ export default {
     margin-right: 5px;
     font-size: 1rem;
 }
-
 </style>

@@ -51,6 +51,7 @@ export default {
 /* Color */
 :root {
   --blue: rgb(0, 110, 255);
+  --hover: rgb(255, 204, 77, 0.5);
 }
 
 /* Fonts */
