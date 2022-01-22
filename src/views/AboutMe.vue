@@ -54,8 +54,8 @@ export default {
         const fetchProjects = () => {
             if(page.value > 0) {
                 axios({
-                    method: "get",
-                    url: config.api.host + "/api/projects" + `?page=${page.value}`
+                    method: "GET",
+                    url: config.api.host + `/api/projects?page=${page.value}`
                 }).then((e) => {
                     page.value = e.data.page.this;
                     max_page.value = e.data.page.max;
