@@ -1,6 +1,7 @@
 {
     "name": "chick_0",
-    "version": "1.0.0",
+    "url": "https://ch1ck.xyz",
+    "version": "1.1.0",
     "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",

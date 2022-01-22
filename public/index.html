@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="ko_KR">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+        <title><%= htmlWebpackPlugin.options.title %></title>
+
+        <meta name="author" content="chick_0">
+        <meta name="keywords" content="chick_0, chick0, ch1ck.xyz">
+        <meta name="description" content="저를 소개합니다.">
+        <meta name="theme-color" content="#FFCC4D">
+
+        <meta property="og:type" content="website">
+        <meta property="og:locale" content="ko_KR">
+        <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
+        <meta property="og:description" content="저를 소개합니다.">
+        <meta property="og:url" content="<%= htmlWebpackPlugin.options.url %>">
+    </head>
+    <body>
+        <noscript style="font-size:30px;font-family:'Noto Sans',sans-serif;text-align:center;">
+            <p>이 웹 사이트를 사용하려면 자바스크립트를 활성화해야 합니다.</p>
+        </noscript>
+        <div id="app"></div>
+        <!-- built files will be auto injected -->
+    </body>
 </html>
