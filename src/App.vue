@@ -135,11 +135,11 @@ section {
 }
 .title.two {
     font-size: 45px;
-    font-weight: 290;
+    font-weight: 350;
 }
 .title.three{
     font-size: 35px;
-    font-weight: 200;
+    font-weight: 300;
 }
 
 /* Button */
