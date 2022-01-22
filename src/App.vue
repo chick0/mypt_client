@@ -153,7 +153,7 @@ section {
     background-color: var(--a-color);
 
     border: currentColor solid 1px;
-    border-radius: .5rem; 
+    border-radius: .39rem;
 }
 .button:hover{
     color: var(--a-color);
