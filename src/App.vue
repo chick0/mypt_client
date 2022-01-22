@@ -1,5 +1,9 @@
 <template>
     <router-view />
+
+    <section class="footer">
+        <p>&copy; 2022 chick_0</p>
+    </section>
 </template>
 
 <script>
@@ -161,5 +165,13 @@ section {
     color: var(--blue);
     background-color: #FFF;
 }
+</style>
 
+<style>
+/* Footer */
+.footer {
+    color: rgb(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 </style>
