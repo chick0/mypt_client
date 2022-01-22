@@ -13,15 +13,16 @@ const routes = [
         component: () => import('./views/Project.vue'),
         props: true
     },
-    {
+    { // old endpoint
         path: "/:uuid",
         name: "ShortProject",
         component: () => import('./views/ShortProject.vue'),
         props: true
     },
+
+    // Back to Root
     {
-        path: "/:pathMatch(.*)*",
-        name: "this_is_soft_404",
+        path: "/:catchAll(.*)*",
         redirect: "/",
     }
 ];
