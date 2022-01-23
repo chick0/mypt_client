@@ -51,7 +51,7 @@ export default {
                 } else {
                     url += `?page=${page.value}`;
                 }
-            } console.log(url);
+            }
 
             if(page.value > 0) {
                 axios({
