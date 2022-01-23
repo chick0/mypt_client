@@ -5,7 +5,7 @@
         <router-link class="project" v-for:="project in projects" :to="fetchUrl(project.uuid)">
             <h3 class="title three">{{ project.title }}</h3>
             <div class="tagbox">
-                <router-link class="tag badge dark" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
+                <router-link class="badge tag" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
                     # {{ tag }}
                 </router-link>
             </div>

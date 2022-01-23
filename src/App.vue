@@ -54,8 +54,9 @@ export default {
 <style>
 /* Color */
 :root {
-  --blue: rgb(0, 110, 255);
-  --hover: rgb(255, 204, 77, 0.5);
+    --tag:  rgb(255, 221, 87, 0.95);
+    --blue: rgb(0, 110, 255);
+    --hover: rgb(255, 204, 77, 0.1);
 }
 
 /* Fonts */
@@ -115,7 +116,6 @@ section {
 	padding: .35em .65em !important;
 	font-size: .75em !important;
     text-align: center !important;
-    vertical-align: center !important;
 	white-space: nowrap !important;
 	border-radius: .25rem !important;
 }
@@ -131,6 +131,11 @@ section {
 .badge.big{
     font-size: 17px !important;
     font-weight: 680 !important;
+}
+
+.badge.tag{
+    color: #000 !important;
+    background-color: var(--tag) !important;
 }
 
 /* Titles */
