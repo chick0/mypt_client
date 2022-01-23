@@ -22,7 +22,7 @@
 
 <script>
 import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
 import config from '../config';
 
@@ -36,6 +36,7 @@ export default {
         const max_page = ref(1);
         const projects = ref([]);
         const route = useRoute();
+        const router = useRouter();
 
         // 쿼리 스트링으로 받은 페이지 번호가 숫자이고 0보다 크면 적용
         if(Number(route.query.page) > 0){
@@ -74,9 +75,22 @@ export default {
 
         // 페이지 넘어가는거 체크
         watch(page, fetchProjects);
-        watch(page, () => {
+
+        watch(projects, () => {
             // `프로젝트` 텍스트 위치로 스크롤 이동
             document.querySelector(".projects").scrollIntoView();
+
+            // 조회된 프로젝트가 없다면
+            if(projects.value.length == 0){
+                if(
+                    confirm(
+                        "* 검색된 프로젝트가 없습니다!\n" +
+                        "* 메인 페이지로 이동하시겠습니까?"
+                    )
+                ){
+                    router.push({ name: "AboutMe" });
+                }
+            }
         });
 
         // 페이지 불러오기
