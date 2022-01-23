@@ -10,16 +10,16 @@
 
 /* Color */
 .badge.primary{
-    color: #FFF !important;
+    color: var(--white) !important;
     background-color: var(--blue) !important;
 }
 .badge.dark{
-    color: #FFF !important;
+    color: var(--white) !important;
     background-color: #333 !important;
 }
 
 .badge.tag{
-    color: #000 !important;
+    color: var(--black) !important;
     background-color: var(--tag) !important;
 }
 

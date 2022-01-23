@@ -156,7 +156,7 @@ export default {
     padding-top: 20px;
     padding-bottom: 10px;
 
-    background-color: #fff !important;
+    background-color: var(--white) !important;
     z-index: 10;
 }
 
@@ -175,7 +175,7 @@ export default {
     margin-right: 10px !important;
 }
 
-/* TagBox */
+/* Tag Box */
 .tagbox {
     margin-top: 20px;
     font-size: 20px;
@@ -184,8 +184,6 @@ export default {
 .tagbox > .tag {
     margin-right: 5px;
 }
-
-
 
 /* Body */
 .body > .pad {

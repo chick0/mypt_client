@@ -33,7 +33,7 @@ section {
 
 /* Footer */
 .footer {
-    color: rgb(0, 0, 0, 0.5);
+    color: var(--gray);
     padding-top: 10px;
     padding-bottom: 10px;
 }

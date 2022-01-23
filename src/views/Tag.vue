@@ -88,7 +88,7 @@ export default {
     padding-top: 20px;
     padding-bottom: 10px;
 
-    background-color: #fff !important;
+    background-color: var(--white) !important;
     z-index: 10;
 }
 

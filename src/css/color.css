@@ -4,4 +4,7 @@
     --selection: rgb(243, 150, 154);
 
     --blue: rgb(0, 110, 255);
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --gray: rgb(0, 0, 0, 0.5);
 }

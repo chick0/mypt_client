@@ -53,7 +53,7 @@ export default {
 /* Projects */
 .projects > .project{
     display: block;
-    color: #000 !important;
+    color: var(--black) !important;
 
     padding-top: 3px;
     padding-bottom: 15px;

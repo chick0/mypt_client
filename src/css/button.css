@@ -6,7 +6,7 @@
     padding-left: 20px;
     padding-right: 20px;
 
-    color: #FFF;
+    color: var(--white);
     background-color: var(--blue);
 
     border: var(--blue) solid 1px;
@@ -15,5 +15,5 @@
 
 .button:hover{
     color: var(--blue);
-    background-color: #FFF;
+    background-color: var(--white);
 }
