@@ -1,12 +1,6 @@
-/* Color */
-:root {
-    --tag:  rgb(255, 221, 87, 0.95);
-    --blue: rgb(0, 110, 255);
-    --hover: rgb(255, 204, 77, 0.1);
-}
-
+/*  */
 ::selection{
-    background-color:rgb(243, 150, 154);
+    background-color: var(--selection);
 }
 
 /* Fonts */

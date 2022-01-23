@@ -53,6 +53,7 @@ export default {
 
 <style>
 /*  */
+@import "./css/color.css";
 @import "./css/main.css";
 @import "./css/title.css";
 
