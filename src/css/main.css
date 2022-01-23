@@ -1,0 +1,45 @@
+/* Color */
+:root {
+    --tag:  rgb(255, 221, 87, 0.95);
+    --blue: rgb(0, 110, 255);
+    --hover: rgb(255, 204, 77, 0.1);
+}
+
+::selection{
+    background-color:rgb(243, 150, 154);
+}
+
+/* Fonts */
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+/* A */
+a {
+    text-decoration: none;
+    color: var(--blue) !important;
+}
+a :hover{
+    text-decoration: none;
+}
+
+/* Section */
+section {
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media (min-width: 700px) {
+    section {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+}
+
+/* Footer */
+.footer {
+    color: rgb(0, 0, 0, 0.5);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

@@ -1,0 +1,19 @@
+/* Button */
+.button {
+    display: inline-block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    color: #FFF;
+    background-color: var(--blue);
+
+    border: var(--blue) solid 1px;
+    border-radius: .39rem;
+}
+
+.button:hover{
+    color: var(--blue);
+    background-color: #FFF;
+}

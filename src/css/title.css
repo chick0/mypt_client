@@ -1,0 +1,17 @@
+/* Title */
+.title{
+    margin-top: 10px;
+    margin-bottom: 3px;
+}
+.title.one {
+    font-size: 60px;
+    font-weight: 150;
+}
+.title.two {
+    font-size: 45px;
+    font-weight: 400;
+}
+.title.three{
+    font-size: 35px;
+    font-weight: 350;
+}
