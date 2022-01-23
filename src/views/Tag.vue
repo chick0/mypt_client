@@ -5,7 +5,7 @@
 
     <section class="head">
         <h1 class="title one">태그 검색</h1>
-        <p class="text"><span class="badge primary"># {{ tag }}</span> (와)과 관련된 프로젝트를 확인하고 있습니다.</p>
+        <p class="text"><a class="badge primary" target="_blank" rel="noreferrer" :href="getGoogle(tag)"># {{ tag }}</a> (와)과 관련된 프로젝트를 확인하고 있습니다.</p>
     </section>
 
     <section>
@@ -66,7 +66,11 @@ export default {
         return {
             tag: tag,
             path: path,
-            trash: trash
+            trash: trash,
+
+            getGoogle: (tag) => {
+                return `https://www.google.com/search?q=${tag}`;
+            }
         }
     }
 }
