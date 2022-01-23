@@ -17,12 +17,6 @@
                 <a :href="project.web" target="_blank">{{ project.web }}</a>
             </li>
         </ul>
-
-        <div class="tagbox">
-            <router-link class="tag badge dark" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
-                # {{ tag }}
-            </router-link>
-        </div>
     </section>
 
     <section class="body" v-if="projectLoad == true">
@@ -40,6 +34,12 @@
             <h2 class="title two">느낀점</h2>
             <div class="content" v-html="project.content.c"></div>
         </div>
+    </section>
+
+    <section class="tagbox">
+        <router-link class="badge tag" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
+            # {{ tag }}
+        </router-link>
     </section>
 </template>
 
