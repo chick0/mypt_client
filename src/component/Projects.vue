@@ -75,11 +75,13 @@ export default {
 
         // 페이지 넘어가는거 체크
         watch(page, fetchProjects);
-
-        watch(projects, () => {
+        watch(page, () => {
             // `프로젝트` 텍스트 위치로 스크롤 이동
             document.querySelector(".projects").scrollIntoView();
+        });
 
+        // 프로젝트를 API에서 불러온다면
+        watch(projects, () => {
             // 조회된 프로젝트가 없다면
             if(projects.value.length == 0){
                 if(
