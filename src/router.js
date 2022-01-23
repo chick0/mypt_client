@@ -5,14 +5,14 @@ const routes = [
     {
         path: "/",
         name: "AboutMe",
-        component: () => import('./views/AboutMe.vue'),
+        component: () => import(/* webpackChunkName: "a" */'./views/AboutMe.vue'),
     },
 
     // Tag 
     {
         path: "/tag/:tag(.*)*", // 한글 인식 이슈
         name: "Tag",
-        component: () => import('./views/Tag.vue'),
+        component: () => import(/* webpackChunkName: "a" */ './views/Tag.vue'),
         props: true
     },
 
@@ -20,13 +20,13 @@ const routes = [
     {
         path: "/project/:uuid",
         name: "Project",
-        component: () => import('./views/Project.vue'),
+        component: () => import(/* webpackChunkName: "b" */ './views/Project.vue'),
         props: true
     },
     { // old endpoint
         path: "/:uuid",
         name: "ShortProject",
-        component: () => import('./views/ShortProject.vue'),
+        component: () => import(/* webpackChunkName: "c" */'./views/ShortProject.vue'),
         props: true
     },
 
