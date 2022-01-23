@@ -176,12 +176,12 @@ export default {
 }
 
 /* TagBox */
-.head > .tagbox {
+.tagbox {
     margin-top: 20px;
     font-size: 20px;
 }
 
-.head > .tagbox > .tag {
+.tagbox > .tag {
     margin-right: 5px;
 }
 
