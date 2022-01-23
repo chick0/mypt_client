@@ -50,7 +50,7 @@ export default {
                 if(url.includes("?")){
                    url += `&page=${page.value}`;
                 } else {
-                    url += `?page=${page.value}`;
+                   url += `?page=${page.value}`;
                 }
             }
 
