@@ -4,23 +4,35 @@
     </section>
 
     <section class="after-top">
-        <h1>Edit</h1>
+        <Editor :uuid="UUID"></Editor>
 
     </section>
 </template>
 
 <script>
+import Editor from '@/component/Editor.vue';
 import { useRoute, useRouter } from 'vue-router';
+import { gate_check } from '@/check';
 
 export default {
+    components: {
+        Editor
+    },
     setup(){
+        // gate_check
+        gate_check();
+
         const route = useRoute();
         const router = useRouter();
-        const uuid = route.params.uuid;
+        const UUID = route.params.uuid;
 
-        console.log(uuid);
+        if(UUID.length != 36){
+            router.push({ name: "AboutMe" });
+        }
 
-        router.push({ name: "AboutMe" });
+        return {
+            UUID: UUID
+        }
     }
 }
 </script>

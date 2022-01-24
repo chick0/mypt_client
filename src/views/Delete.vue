@@ -7,9 +7,13 @@
 
 <script>
 import { useRoute, useRouter } from 'vue-router';
+import { gate_check } from '@/check';
 
 export default {
     setup(){
+        // gate_check
+        gate_check();
+
         const route = useRoute();
         const router = useRouter();
         const uuid = route.params.uuid;

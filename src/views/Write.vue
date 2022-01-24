@@ -10,9 +10,12 @@
 </template>
 
 <script>
+import { gate_check } from '@/check';
+
 export default {
     setup(){
-        alert("editor ready");
+        // gate_check
+        gate_check();
     }
 }
 </script>
