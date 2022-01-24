@@ -1,6 +1,11 @@
 <template>
     <section class="aboutme">
-        <h1 class="title one">{{ about_me.name }}</h1>
+        <h1 class="title one" @click="loginCounter++">{{ about_me.name }}</h1>
+
+        <div v-if="loginUI == true">
+            <router-link :to="{ name: 'Auth' }">로그인</router-link> |
+            <router-link :to="{ name: 'Logout' }">로그아웃</router-link>
+        </div>
 
         <ul class="list">
             <li class="item">
@@ -24,6 +29,7 @@
 </template>
 
 <script>
+import { ref, watch } from 'vue';
 import Projects from '@/component/Projects.vue';
 import config from '@/config';
 import { is_login } from '@/check';
@@ -33,10 +39,24 @@ export default {
         Projects
     },
     setup(){
+        const loginUI = ref(false);
+        const loginCounter = ref(0);
+
+        watch(loginCounter, () => {
+            if(loginCounter.value == 3){
+                loginUI.value = true;
+            } else {
+                loginUI.value = false;
+            }
+        });
+
         return {
             about_me: config.about_me,
             path: "/api/projects",
             logined: is_login(),
+
+            loginUI: loginUI,
+            loginCounter: loginCounter
         }
     },
 }
