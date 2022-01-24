@@ -54,45 +54,4 @@ export default {
     width: 50px !important;
     margin-right: 10px !important;
 }
-
-/* Projects */
-.projects > .project{
-    display: block;
-    color: var(--black) !important;
-
-    padding-top: 3px;
-    padding-bottom: 15px;
-}
-
-.projects > .project:hover{
-    background-color: var(--hover);
-}
-
-.projects > .project > .tagbox {
-    font-size: 20px;
-}
-
-.projects > .project > .tagbox > .tag {
-    margin-right: 5px;
-}
-
-.projects > .project > .date {
-    font-size: 16px;
-    margin: 0;
-}
-
-/* Page */
-.page {
-    display: flex;
-    text-align: center;
-
-    padding-top: 30px;
-    padding-bottom: 45px;
-}
-.page > .button {
-    flex: 1;
-    margin-left: 5px;
-    margin-right: 5px;
-    font-size: 1rem;
-}
 </style>
