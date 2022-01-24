@@ -48,7 +48,7 @@ import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { marked } from 'marked';
 import axios from 'axios';
-import config from '../config';
+import config from '@/config';
 
 export default {
     setup(){

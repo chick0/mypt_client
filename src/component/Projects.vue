@@ -24,7 +24,7 @@
 import { ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import axios from 'axios';
-import config from '../config';
+import config from '@/config';
 
 export default {
     name: "Projects",

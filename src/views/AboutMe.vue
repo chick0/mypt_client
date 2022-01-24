@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import config from '../config';
+import config from '@/config';
 
 import Projects from '@/component/Projects.vue';
 
