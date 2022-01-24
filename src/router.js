@@ -30,7 +30,7 @@ const routes = [
         path: "/tag/:tag(.*)*", // 한글 인식 이슈
         name: "Tag",
         component: () => import(/* webpackChunkName: "a" */ './views/Tag.vue'),
-        props: true
+        props: true,
     },
 
     // Project
