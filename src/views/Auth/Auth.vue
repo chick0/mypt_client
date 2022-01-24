@@ -14,13 +14,7 @@ export default {
     setup(){
         const router = useRouter();
 
-        if(sessionStorage.getItem("mypt_login")) {
-            alert(
-                "* 대시보드 개발대기."
-            );
-
-            router.push({ name: "AboutMe" });
-        } else {
+        if(sessionStorage.getItem("mypt_token") == null){
             const timeout = 1500;
             setTimeout(() => {
                 alert(
@@ -44,6 +38,12 @@ export default {
             }).catch(() => {
                 console.error("API 서버에서 URL 정보를 불러오는데 실패했습니다.");
             });
+        } else {
+            alert(
+                "* 이미 로그인 되어있습니다."
+            );
+
+            router.push({ name: "AboutMe" });
         }
     }
 }
