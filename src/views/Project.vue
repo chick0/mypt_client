@@ -175,24 +175,25 @@ export default {
     margin-right: 10px !important;
 }
 
-/* Tag Box */
-.tagbox {
-    margin-top: 20px;
-    font-size: 20px;
-}
-
-.tagbox > .tag {
-    margin-right: 5px;
-}
-
 /* Body */
 .body > .pad {
     padding-top: 15px;
-    padding-bottom: 30px;
 }
 
 .body > .pad > .content {
     font-size: 16px;
     line-height: 26px;
+}
+
+/* Tag Box */
+.tagbox {
+    font-size: 20px;
+
+    padding-top: 20px;
+    padding-bottom: 30px;
+}
+
+.tagbox > .tag {
+    margin-right: 5px;
 }
 </style>
