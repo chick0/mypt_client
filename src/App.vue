@@ -61,4 +61,5 @@ export default {
 @import "./css/list.css";
 @import "./css/badge.css";
 @import "./css/button.css";
+@import "./css/fixed-top.css";
 </style>

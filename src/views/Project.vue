@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 뒤로 돌아가기</router-link>
     </section>
 
-    <section class="head" v-if="projectLoad == true">
+    <section class="head after-top" v-if="projectLoad == true">
         <h1 class="title one" id="top">{{ project.title }}</h1>
         <p class="date">{{ project.date }}</p>
 
@@ -145,26 +145,7 @@ export default {
 </script>
 
 <style scoped>
-/* fixed-top */
-.fixed-top {
-    position: fixed;
-
-    top: 0; 
-    left: 0;
-    width: 100%;
-
-    padding-top: 20px;
-    padding-bottom: 10px;
-
-    background-color: var(--white) !important;
-    z-index: 10;
-}
-
 /* Head */
-.head {
-    padding-top: 40px;
-}
-
 .head > .date {
     font-size: 20px;
     margin-top: 0;

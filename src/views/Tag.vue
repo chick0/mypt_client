@@ -3,7 +3,7 @@
         <router-link :to="{ name: 'AboutMe' }">← 뒤로 돌아가기</router-link>
     </section>
 
-    <section class="head">
+    <section class="head after-top">
         <h1 class="title one">태그 검색</h1>
         <p class="text"><a class="badge primary" target="_blank" rel="noreferrer" :href="getGoogle(tag)"># {{ tag }}</a> (와)과 관련된 프로젝트를 확인하고 있습니다.</p>
     </section>
@@ -77,26 +77,7 @@ export default {
 </script>
 
 <style scoped>
-/* fixed-top */
-.fixed-top {
-    position: fixed;
-
-    top: 0; 
-    left: 0;
-    width: 100%;
-
-    padding-top: 20px;
-    padding-bottom: 10px;
-
-    background-color: var(--white) !important;
-    z-index: 10;
-}
-
 /* Head */
-.head {
-    padding-top: 40px;
-}
-
 .head > .text {
     font-size: 26px;
     font-weight: 200 !important;
