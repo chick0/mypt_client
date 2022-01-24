@@ -17,3 +17,33 @@
     color: var(--blue);
     background-color: var(--white);
 }
+
+.button.margin {
+    margin-right: 10px;
+}
+
+.button.yellow {
+    color: var(--black);
+    background-color: var(--yellow);
+
+    border: var(--yellow) solid 1px;
+}
+.button.yellow:hover {
+    color: var(--black);
+    background-color: var(--yellow-);
+
+    border: var(--yellow-) solid 1px;
+}
+
+.button.red {
+    color: var(--white);
+    background-color: var(--red);
+
+    border: var(--red) solid 1px;
+}
+.button.red:hover {
+    color: var(--white);
+    background-color: var(--red-);
+
+    border: var(--red-) solid 1px;
+}
