@@ -19,6 +19,11 @@
         </ul>
     </section>
 
+    <section v-if="logined == true">
+        <router-link class="button yellow margin" :to="{ name: 'Edit', params: { uuid: $route.params.uuid } }">수정하기</router-link>
+        <router-link class="button red" :to="{ name: 'Delete', params: { uuid: $route.params.uuid } }">삭제하기</router-link>
+    </section>
+
     <section class="body" v-if="projectLoad == true">
         <div class="pad">
             <h2 class="title two">기획의도</h2>
@@ -49,6 +54,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { marked } from 'marked';
 import axios from 'axios';
 import config from '@/config';
+import { is_login } from '@/check'
 
 export default {
     setup(){
@@ -138,7 +144,9 @@ export default {
         return {
             project: project,
             projectLoad: projectLoad,
-            checkLength: checkLength
+            checkLength: checkLength,
+
+            logined: is_login()
         }
     }
 }

@@ -47,6 +47,25 @@ const routes = [
         props: true,
     },
 
+    // Editor
+    {
+        path: "/write",
+        name: "Write",
+        component: () => import(/* webpackChunkName: "editor" */ './views/Write.vue'),
+    },
+    {
+        path: "/project/:uuid/edit",
+        name: "Edit",
+        component: () => import(/* webpackChunkName: "editor" */ './views/Edit.vue'),
+        props: true,
+    },
+    {
+        path: "/project/:uuid/delete",
+        name: "Delete",
+        component: () => import(/* webpackChunkName: "editor" */ './views/Delete.vue'),
+        props: true,
+    },
+
     // Back to Root
     {
         path: "/:catchAll(.*)*",
