@@ -11,7 +11,7 @@ body {
 /* A */
 a {
     text-decoration: none;
-    color: var(--blue) !important;
+    color: var(--blue);
 }
 a :hover{
     text-decoration: none;
