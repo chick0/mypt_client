@@ -14,15 +14,19 @@
         </ul>
     </section>
 
+    <section v-if="logined == true">
+        <router-link class="button" :to="{ name: 'Write' }">프로젝트 등록하기</router-link>
+    </section>
+
     <section>
         <Projects :path="path"></Projects>
     </section>
 </template>
 
 <script>
-import config from '@/config';
-
 import Projects from '@/component/Projects.vue';
+import config from '@/config';
+import { is_login } from '@/check';
 
 export default {
     components: {
@@ -31,7 +35,8 @@ export default {
     setup(){
         return {
             about_me: config.about_me,
-            path: "/api/projects"
+            path: "/api/projects",
+            logined: is_login(),
         }
     },
 }
