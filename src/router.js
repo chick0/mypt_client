@@ -8,6 +8,18 @@ const routes = [
         component: () => import(/* webpackChunkName: "a" */'./views/AboutMe.vue'),
     },
 
+    // Auth
+    {
+        path: "/auth",
+        name: "Auth",
+        component: () => import(/* webpackChunkName: "auth" */ './views/Auth/Login.vue'),
+    },
+    {
+        path: "/auth/callback",
+        name: "CallBack",
+        component: () => import(/* webpackChunkName: "auth" */ './views/Auth/CallBack.vue'),
+    },
+
     // Tag 
     {
         path: "/tag/:tag(.*)*", // 한글 인식 이슈
