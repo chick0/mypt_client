@@ -38,13 +38,13 @@ const routes = [
         path: "/project/:uuid",
         name: "Project",
         component: () => import(/* webpackChunkName: "b" */ './views/Project.vue'),
-        props: true
+        props: true,
     },
     { // old endpoint
         path: "/:uuid",
         name: "ShortProject",
         component: () => import(/* webpackChunkName: "c" */'./views/ShortProject.vue'),
-        props: true
+        props: true,
     },
 
     // Back to Root
