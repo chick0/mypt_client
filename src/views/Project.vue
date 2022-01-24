@@ -54,7 +54,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { marked } from 'marked';
 import axios from 'axios';
 import config from '@/config';
-import { is_login } from '@/check'
+import { is_login } from '@/check';
 
 export default {
     setup(){
