@@ -5,7 +5,6 @@
 
     <section class="after-top">
         <Editor :uuid="UUID"></Editor>
-
     </section>
 </template>
 
@@ -20,18 +19,18 @@ export default {
     },
     setup(){
         // gate_check
-        gate_check();
+        if(gate_check()){
+            const route = useRoute();
+            const router = useRouter();
+            const UUID = route.params.uuid;
 
-        const route = useRoute();
-        const router = useRouter();
-        const UUID = route.params.uuid;
+            if(UUID.length != 36){
+                router.push({ name: "AboutMe" });
+            }
 
-        if(UUID.length != 36){
-            router.push({ name: "AboutMe" });
-        }
-
-        return {
-            UUID: UUID
+            return {
+                UUID: UUID
+            }
         }
     }
 }

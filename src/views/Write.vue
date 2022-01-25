@@ -4,18 +4,23 @@
     </section>
 
     <section class="after-top">
-        <h1>Write</h1>
-
+        <Editor></Editor>
     </section>
 </template>
 
 <script>
+import Editor from '@/component/Editor.vue';
 import { gate_check } from '@/check';
 
 export default {
+    components: {
+        Editor
+    },
     setup(){
         // gate_check
-        gate_check();
+        if(gate_check()){
+            alert("w");
+        }
     }
 }
 </script>
