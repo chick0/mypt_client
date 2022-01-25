@@ -76,6 +76,8 @@ export default {
                 alert("프로젝트 로드중 오류 발생");
                 console.error(e);
             });
+        } else {
+            projectLoad.value = true;
         }
 
         return {
