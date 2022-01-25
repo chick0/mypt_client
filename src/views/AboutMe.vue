@@ -48,6 +48,10 @@ export default {
             } else {
                 loginUI.value = false;
             }
+
+            if (loginCounter.value == 9) {
+                loginCounter.value = 0;
+            }
         });
 
         return {
