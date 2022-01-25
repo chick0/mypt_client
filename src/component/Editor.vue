@@ -55,26 +55,28 @@ export default {
             element.target.style.height = element.target.scrollHeight - 4 + 'px';
         };
 
-        axios({
-            method: "GET",
-            url: config.api.host + `/api/project/${UUID.value}`
-        }).then((e) => {
-            const data = e.data;
+        if(UUID.value.length == 36){
+            axios({
+                method: "GET",
+                url: config.api.host + `/api/project/${UUID.value}`
+            }).then((e) => {
+                const data = e.data;
 
-            title.value  = data.title;
-            date.value   = data.dt;
-            tag.value    = data.tags.join(", ");
-            github.value = data.github;
-            web.value    = data.web;
-            a.value      = data.content.a;
-            b.value      = data.content.b;
-            c.value      = data.content.c;
+                title.value  = data.title;
+                date.value   = data.dt;
+                tag.value    = data.tags.join(", ");
+                github.value = data.github;
+                web.value    = data.web;
+                a.value      = data.content.a;
+                b.value      = data.content.b;
+                c.value      = data.content.c;
 
-            projectLoad.value = true;
-        }).catch((e) => {
-            alert("프로젝트 로드중 오류 발생");
-            console.error(e);
-        });
+                projectLoad.value = true;
+            }).catch((e) => {
+                alert("프로젝트 로드중 오류 발생");
+                console.error(e);
+            });
+        }
 
         return {
             title:  title,
