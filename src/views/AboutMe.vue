@@ -43,14 +43,10 @@ export default {
         const loginCounter = ref(0);
 
         watch(loginCounter, () => {
-            if(loginCounter.value == 3){
+            if(loginCounter.value >= 3){
                 loginUI.value = true;
             } else {
                 loginUI.value = false;
-            }
-
-            if (loginCounter.value == 9) {
-                loginCounter.value = 0;
             }
         });
 
