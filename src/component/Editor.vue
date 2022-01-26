@@ -2,21 +2,23 @@
     <div class="editor" v-if="projectLoad == true">
         <ul class="list">
             <li class="item">
-                <b>제목</b> <input type="text" v-model="title">
+                <b class="badge primary">제목</b> <input type="text" v-model="title">
             </li>
             <li class="item">
-                <b>날짜</b> <input type="date" v-model="date">
+                <b class="badge dark">날짜</b> <input type="date" v-model="date">
             </li>
             <li class="item">
-                <b>태그</b> <input type="text" v-model="tag">
+                <b class="badge tag">태그</b> <input type="text" v-model="tag">
             </li>
             <li class="item">
-                <b>깃헙</b> <input type="url" v-model="github">
+                <b class="badge dark">Github</b> <input type="url" v-model="github">
             </li>
             <li class="item">
-                <b>웹사이트</b> <input type="url" v-model="web">
+                <b class="badge primary">Web</b> <input type="url" v-model="web">
             </li>
         </ul>
+
+        <br>
 
         <h2 class="title two">기획의도</h2>
         <textarea v-model="a" @focus="resize" @input="resize"></textarea>
@@ -149,25 +151,31 @@ export default {
 
 <style scoped>
 /* Editor */
-.item > b {
+.editor > .list > .item > b {
     display: inline-block;
     font-size: 16px;
-    width: 95px;
+    width: 50px;
+    margin-right: 10px;
 }
 
-.item > input {
+.editor > .list > .item > input {
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     border: none;
-    border-bottom: 2px var(--selection) solid;
-
-    width: calc(100% - 110px);
+    width: calc(100% - 120px);
+    border-bottom: var(--red) 1px solid;
 }
 
-textarea {
+.editor > br {
+    margin-top: 30px;
+}
+
+.editor > textarea {
+    font-family: 'Noto Sans', sans-serif;
     font-size: 16px;
     width: 100%;
     border: none;
-    min-height: 90px;
+    min-height: 200px;
     height: auto;
 }
 
