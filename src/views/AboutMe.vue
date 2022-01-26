@@ -52,7 +52,7 @@ export default {
 
         return {
             about_me: config.about_me,
-            path: "/api/projects",
+            path: "/projects",
             logined: is_login(),
 
             loginUI: loginUI,

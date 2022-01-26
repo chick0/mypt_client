@@ -58,7 +58,7 @@ export default {
         if(UUID.value.length == 36){
             axios({
                 method: "GET",
-                url: config.api.host + `/api/project/${UUID.value}`
+                url: config.api.host + `/project/${UUID.value}`
             }).then((e) => {
                 const data = e.data;
 

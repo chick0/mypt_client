@@ -39,7 +39,7 @@ export default {
             }
 
             // 태그 정돈이 끝나면 API 경로 업데이트
-            path.value = `/api/tag?tag=${tag.value}`;
+            path.value = `/tag?tag=${tag.value}`;
 
             // 옛날 값과 바뀐 태그가 다르다면
             if(tag.value != old.value){
