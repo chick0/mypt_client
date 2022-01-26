@@ -33,9 +33,10 @@ export default {
                 console.log(e.response.data);
 
                 alert(
-                    "* 로그인 요청이 실패했습니다.\n" +
+                    "* 해당 계정은 로그인 할 수 없습니다.\n" +
                     "* 메인화면으로 이동합니다."
-                ); router.push({ name: "AboutMe" });
+                );
+                router.push({ name: "AboutMe" });
             });
         }
     }

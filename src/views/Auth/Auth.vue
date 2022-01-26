@@ -15,14 +15,6 @@ export default {
         const router = useRouter();
 
         if(sessionStorage.getItem("mypt_token") == null){
-            const timeout = 1500;
-            setTimeout(() => {
-                alert(
-                    "* 로그인 시도가 실패했습니다.\n" +
-                    "* 메인화면으로 이동합니다."
-                ); router.push({ name: "AboutMe" });
-            }, timeout);
-
             axios({
                 method: "GET",
                 url: config.api.host + '/auth/get-url'
@@ -31,12 +23,24 @@ export default {
                 const url = urls[config.auth.service];
 
                 if(url == undefined){
-                    console.error("지원하지 않는 로그인 서비스. API 버전을 확인하세요.");
+                    alert(
+                        "* 지원하지 않는 로그인 서비스 입니다.\n" +
+                        "* API 서버를 확인해주세요.\n" +
+                        "* 메인화면으로 이동합니다."
+                    );
+
+                    router.push({ name: "AboutMe" });
                 } else {
                     location.replace(url);
                 }
-            }).catch(() => {
-                console.error("API 서버에서 URL 정보를 불러오는데 실패했습니다.");
+            }).catch((e) => {
+                alert(
+                    "* API 서버에서 OAuth 정보를 불러오는데 실패했습니다.\n" +
+                    "* 메인화면으로 이동합니다."
+                );
+
+                router.push({ name: "AboutMe" });
+                console.error(e);
             });
         } else {
             alert(
