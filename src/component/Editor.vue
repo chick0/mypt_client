@@ -1,5 +1,5 @@
 <template>
-    <div v-if="projectLoad == true">
+    <div class="editor" v-if="projectLoad == true">
         <ul class="list">
             <li class="item">
                 <b>제목</b> <input type="text" v-model="title">
@@ -26,6 +26,10 @@
 
         <h2 class="title two">느낀점</h2>
         <textarea v-model="c" @focus="resize" @input="resize"></textarea>
+    </div>
+
+    <div class="tools" v-if="projectLoad == true">
+        <button class="button save" @click="saveProject">프로젝트 저장</button>
     </div>
 </template>
 
@@ -55,7 +59,9 @@ export default {
             element.target.style.height = element.target.scrollHeight - 4 + 'px';
         };
 
-        if(UUID.value.length == 36){
+        const fetchProject = () => {
+            projectLoad.value = false;
+
             axios({
                 method: "GET",
                 url: config.api.host + `/project/${UUID.value}`
@@ -76,9 +82,52 @@ export default {
                 alert("프로젝트 로드중 오류 발생");
                 console.error(e);
             });
+        };
+
+        if(UUID.value.length == 36){
+            fetchProject();
         } else {
             projectLoad.value = true;
         }
+
+        const saveProject = () => {
+            const token = sessionStorage.getItem("mypt_token");
+            const data = {
+                title:  title.value,
+                date:   date.value,
+                tag:    tag.value,
+                github: github.value,
+                web:    web.value,
+                a:      a.value,
+                b:      b.value,
+                c:      c.value
+            };
+
+            axios({
+                method: "POST",
+                url: config.api.host + `/manage/${UUID.value}`,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+                data: data
+            }).then((e) => {
+                if(e.data.uuid != undefined){
+                    UUID.value = e.data.uuid;
+                }
+
+                alert(e.data.message);
+                fetchProject();
+            }).catch((e) => {
+                const code = e.response.status;
+                const data = e.response.data;
+
+                if(code == 404){
+                    alert(data.error.message);
+                } else {
+                    alert(code + ": " + data.message);
+                }
+            });
+        };
 
         return {
             title:  title,
@@ -91,13 +140,15 @@ export default {
             c:      c,
             projectLoad: projectLoad,
 
-            resize: resize
+            resize: resize,
+            saveProject: saveProject
         }
     }
 }
 </script>
 
 <style scoped>
+/* Editor */
 .item > b {
     display: inline-block;
     font-size: 16px;
@@ -118,5 +169,16 @@ textarea {
     border: none;
     min-height: 90px;
     height: auto;
+}
+
+/* Tools */
+.tools {
+    display: flex;
+    padding-top: 40px;
+}
+
+.tools > .save{
+    flex: 1;
+    font-size: 16px;
 }
 </style>
