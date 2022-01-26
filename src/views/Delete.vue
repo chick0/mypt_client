@@ -31,9 +31,6 @@ export default {
                 }
             }).then((e) => {
                 console.log(e);
-
-                alert(e.data.message);
-
                 router.push({ name: "AboutMe" });
             }).catch((e) => {
                 const code = e.response.status;
@@ -49,7 +46,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>
