@@ -18,9 +18,6 @@ export default {
             const route = useRoute();
             const router = useRouter();
             const uuid = route.params.uuid;
-
-            console.log(uuid);
-
             const token = sessionStorage.getItem("mypt_token");
 
             axios({
