@@ -1,6 +1,6 @@
 <template>
     <section class="fixed-top">
-        <router-link :to="{ name: 'AboutMe' }">← 뒤로 돌아가기</router-link>
+        <router-link :to="{ name: 'AboutMe' }">← 메인 페이지로 돌아가기</router-link>
     </section>
 
     <section class="head after-top">
