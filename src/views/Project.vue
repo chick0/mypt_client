@@ -107,7 +107,7 @@ export default {
             // 프로젝트 로딩 완료
             projectLoad.value = true;
 
-            if(project.value.title.includes("[작성중]")){
+            if(!is_login() && project.value.title.includes("[작성중]")){
                 if(
                     confirm("* 해당 프로젝트의 설명은 작성 중입니다.\n" +
                             "* 메인 페이지로 이동하시겠습니까?")
