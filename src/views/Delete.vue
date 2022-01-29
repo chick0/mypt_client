@@ -18,7 +18,7 @@ export default {
             const route = useRoute();
             const router = useRouter();
             const uuid = route.params.uuid;
-            const token = sessionStorage.getItem("mypt_token");
+            const token = localStorage.getItem("mypt_token");
 
             if(
                 confirm(

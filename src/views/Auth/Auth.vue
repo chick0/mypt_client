@@ -14,7 +14,7 @@ export default {
     setup(){
         const router = useRouter();
 
-        if(sessionStorage.getItem("mypt_token") == null){
+        if(localStorage.getItem("mypt_token") == null){
             axios({
                 method: "GET",
                 url: config.api.host + '/auth/get-url'

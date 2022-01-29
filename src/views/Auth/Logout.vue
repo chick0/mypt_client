@@ -10,7 +10,7 @@ import { useRouter } from 'vue-router';
 
 export default {
     setup(){
-        sessionStorage.removeItem("mypt_token");
+        localStorage.removeItem("mypt_token");
 
         const router = useRouter();
         router.push({ name: "AboutMe" });

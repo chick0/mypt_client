@@ -53,7 +53,7 @@ export default {
         });
 
         if(is_login()){
-            const token = sessionStorage.getItem("mypt_token");
+            const token = localStorage.getItem("mypt_token");
             axios({
                 method: "GET",
                 url: config.api.host + `/auth/test`,
@@ -65,9 +65,9 @@ export default {
             }).catch((e) => {
                 const code = e.response.status;
                 const data = e.response.data.message;
-                alert(`${code}: ${data}`);
 
-                sessionStorage.removeItem("mypt_token")
+                alert(`${code}: ${data}`);
+                localStorage.removeItem("mypt_token");
             });
         }
 

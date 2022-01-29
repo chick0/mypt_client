@@ -24,7 +24,7 @@ export default {
                 url: config.api.host + `/auth/${config.auth.service}/callback?code=${code}`
             }).then((e) => {
                 const token = e.data.token;
-                sessionStorage.setItem("mypt_token", token);
+                localStorage.setItem("mypt_token", token);
 
                 alert("로그인 성공");
                 router.push({ name: "AboutMe" });

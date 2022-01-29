@@ -93,7 +93,7 @@ export default {
         }
 
         const saveProject = () => {
-            const token = sessionStorage.getItem("mypt_token");
+            const token = localStorage.getItem("mypt_token");
             const data = {
                 title:  title.value,
                 date:   date.value,
