@@ -33,6 +33,7 @@ import { ref, watch } from 'vue';
 import Projects from '@/component/Projects.vue';
 import config from '@/config';
 import { is_login } from '@/check';
+import axios from 'axios';
 
 export default {
     components: {
@@ -49,6 +50,23 @@ export default {
                 loginUI.value = false;
             }
         });
+
+        if(is_login()){
+            const token = sessionStorage.getItem("mypt_token");
+            axios({
+                method: "GET",
+                url: config.api.host + `/auth/test`,
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }).catch((e) => {
+                const code = e.response.status;
+                const data = e.response.data.message;
+                alert(`${code}: ${data}`);
+
+                sessionStorage.removeItem("mypt_token")
+            });
+        }
 
         return {
             about_me: config.about_me,
