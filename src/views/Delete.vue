@@ -43,6 +43,8 @@ export default {
                     } else {
                         alert(code + ": " + data.message);
                     }
+
+                    router.push({ name: "Project", params:{ uuid: uuid } });
                 });
             } else {
                 alert("프로젝트 삭제가 취소되었습니다.");
