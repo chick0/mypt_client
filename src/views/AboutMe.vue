@@ -19,7 +19,7 @@
         </ul>
     </section>
 
-    <section v-if="logined == true">
+    <section v-if="loginStatus == true">
         <router-link class="button" :to="{ name: 'Write' }">프로젝트 등록하기</router-link>
     </section>
 
@@ -42,6 +42,7 @@ export default {
     setup(){
         const loginUI = ref(false);
         const loginCounter = ref(0);
+        const loginStatus = ref(false);
 
         watch(loginCounter, () => {
             if(loginCounter.value >= 3){
@@ -59,6 +60,8 @@ export default {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
+            }).then(() => {
+                loginStatus.value = true;
             }).catch((e) => {
                 const code = e.response.status;
                 const data = e.response.data.message;
@@ -71,10 +74,10 @@ export default {
         return {
             about_me: config.about_me,
             path: "/projects",
-            logined: is_login(),
 
-            loginUI: loginUI,
-            loginCounter: loginCounter
+            loginUI,
+            loginCounter,
+            loginStatus
         }
     },
 }
