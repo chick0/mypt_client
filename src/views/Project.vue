@@ -51,13 +51,14 @@
 <script>
 import { ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { marked } from 'marked';
+import { setOptions, Renderer, parse } from 'marked';
 import axios from 'axios';
 import config from '@/config';
 import { is_login } from '@/check';
 
 export default {
     setup(){
+        const renderer = new Renderer();
         const router = useRouter();
         const projectLoad = ref(false);
         const project = ref({
@@ -81,10 +82,18 @@ export default {
             router.push({ name: "AboutMe" });
         }
 
-        const renderer = new marked.Renderer();
-        renderer.link = ( href, title, text ) => `<a target="_blank" rel="noreferrer" href="${ href }">${ text }</a>`;
+        renderer.link = ( href, title, text ) => {
+            let url = new URL(href);
+            let target = "_blank";
 
-        marked.setOptions({
+            if(window.location.host == url.host){
+                target = "_self";
+            }
+
+            return `<a target="${target}" rel="noreferrer" href="${href}">${text}</a>`;
+        };
+
+        setOptions({
             gfm: true,
             renderer: renderer
         });
@@ -99,9 +108,9 @@ export default {
             // 마크다운만 렌더링해서 다시 적용
             const content = resp.data.content;
             project.value.content = {
-                a: marked.parse(content.a),
-                b: marked.parse(content.b),
-                c: marked.parse(content.c),
+                a: parse(content.a),
+                b: parse(content.b),
+                c: parse(content.c),
             }
 
             // 프로젝트 로딩 완료
