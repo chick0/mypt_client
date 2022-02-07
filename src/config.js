@@ -8,6 +8,6 @@ export default {
         github: "https://github.com/chick0",
     },
     auth: {
-        service: "github"
-    }
-}
+        service: "github",
+    },
+};

@@ -6,39 +6,43 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from 'vue-router';
-import axios from 'axios';
-import config from '@/config';
+import { useRoute, useRouter } from "vue-router";
+import axios from "axios";
+import config from "@/config";
 
 export default {
-    setup(){
+    setup() {
         const route = useRoute();
         const router = useRouter();
-        const code = route.query.code;                
+        const code = route.query.code;
 
-        if(code == undefined){
+        if (code == undefined) {
             router.push({ name: "AboutMe" });
         } else {
             axios({
                 method: "GET",
-                url: config.api.host + `/auth/${config.auth.service}/callback?code=${code}`
-            }).then((e) => {
-                const token = e.data.token;
-                localStorage.setItem("mypt_token", token);
+                url:
+                    config.api.host +
+                    `/auth/${config.auth.service}/callback?code=${code}`,
+            })
+                .then((e) => {
+                    const token = e.data.token;
+                    localStorage.setItem("mypt_token", token);
 
-                alert("로그인 성공");
-                router.push({ name: "AboutMe" });
-            }).catch((e) => {
-                console.error(e);
-                console.log(e.response.data);
+                    alert("로그인 성공");
+                    router.push({ name: "AboutMe" });
+                })
+                .catch((e) => {
+                    console.error(e);
+                    console.log(e.response.data);
 
-                alert(
-                    "* 해당 계정은 로그인 할 수 없습니다.\n" +
-                    "* 메인화면으로 이동합니다."
-                );
-                router.push({ name: "AboutMe" });
-            });
+                    alert(
+                        "* 해당 계정은 로그인 할 수 없습니다.\n" +
+                            "* 메인화면으로 이동합니다."
+                    );
+                    router.push({ name: "AboutMe" });
+                });
         }
-    }
-}
+    },
+};
 </script>

@@ -6,17 +6,17 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute, useRouter } from "vue-router";
 
 export default {
-    setup(){
+    setup() {
         const route = useRoute();
         const router = useRouter();
         const uuid = route.params.uuid;
         const page = route.query.page;
 
         console.log(`uuid = ${uuid}`);
-        if(uuid.length != 36){
+        if (uuid.length != 36) {
             router.push({ name: "AboutMe" });
         } else {
             router.push({
@@ -25,10 +25,10 @@ export default {
                     uuid: uuid,
                 },
                 query: {
-                    page: page
-                }
+                    page: page,
+                },
             });
         }
-    }
-}
+    },
+};
 </script>

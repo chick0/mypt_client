@@ -1,11 +1,23 @@
 <template>
     <section class="fixed-top">
-        <router-link :to="{ name: 'AboutMe' }">← 메인 페이지로 돌아가기</router-link>
+        <router-link :to="{ name: 'AboutMe' }">
+            ← 메인 페이지로 돌아가기
+        </router-link>
     </section>
 
     <section class="head after-top">
         <h1 class="title one">태그 검색</h1>
-        <p class="text"><a class="badge primary" target="_blank" rel="noreferrer" :href="getGoogle(tag)"># {{ tag }}</a> (와)과 관련된 프로젝트를 확인하고 있습니다.</p>
+        <p class="text">
+            <a
+                class="badge primary"
+                target="_blank"
+                rel="noreferrer"
+                :href="getGoogle(tag)"
+            >
+                # {{ tag }}
+            </a>
+            (와)과 관련된 프로젝트를 확인하고 있습니다.
+        </p>
     </section>
 
     <section>
@@ -14,16 +26,16 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { ref, watch } from "vue";
+import { useRoute } from "vue-router";
 
-import Projects from '@/component/Projects.vue';
+import Projects from "@/component/Projects.vue";
 
 export default {
     components: {
-        Projects
+        Projects,
     },
-    setup(){
+    setup() {
         const route = useRoute();
         const tag = ref();
         const old = ref();
@@ -34,7 +46,7 @@ export default {
         // 새로고침 하거나 링크로 들어오면 Array로 인식됨.
         //   => 한글 인식 이슈 해결을 위해 발생된 문제
         const cleanTag = () => {
-            if(typeof tag.value == "object"){
+            if (typeof tag.value == "object") {
                 tag.value = tag.value[0];
             }
 
@@ -42,14 +54,13 @@ export default {
             path.value = `/tag?tag=${tag.value}`;
 
             // 옛날 값과 바뀐 태그가 다르다면
-            if(tag.value != old.value){
+            if (tag.value != old.value) {
                 // 쓰레기 값 1증가 시키기
                 trash.value += 1;
 
                 // 옛날 값 업데이트
                 old.value = tag.value;
             }
-
         };
 
         // 태그 변동 감지기를 설치하고 값을 변경
@@ -58,10 +69,13 @@ export default {
         old.value = tag.value; // 초기 값 수동 지정
 
         // 다른 태그로 넘어가는지 감시하는 감지기
-        watch(() => route.params.tag, () => {
-            // 그러면 태그 변동 감지기 작동시키기
-            tag.value = route.params.tag;
-        });
+        watch(
+            () => route.params.tag,
+            () => {
+                // 그러면 태그 변동 감지기 작동시키기
+                tag.value = route.params.tag;
+            }
+        );
 
         return {
             tag: tag,
@@ -70,10 +84,10 @@ export default {
 
             getGoogle: (tag) => {
                 return `https://www.google.com/search?q=${tag}`;
-            }
-        }
-    }
-}
+            },
+        };
+    },
+};
 </script>
 
 <style scoped>

@@ -1,6 +1,10 @@
 <template>
     <section class="fixed-top">
-        <router-link :to="{ name: 'AboutMe', query: { page: $route.query.page } }">← 메인 페이지로 돌아가기</router-link>
+        <router-link
+            :to="{ name: 'AboutMe', query: { page: $route.query.page } }"
+        >
+            ← 메인 페이지로 돌아가기
+        </router-link>
     </section>
 
     <section class="head after-top" v-if="projectLoad == true">
@@ -10,7 +14,9 @@
         <ul class="list">
             <li class="item" v-if="checkLength(project.github)">
                 <span class="badge dark big">Github</span>
-                <a :href="project.github" target="_blank" rel="noreferrer">{{ project.github_preview }}</a>
+                <a :href="project.github" target="_blank" rel="noreferrer">
+                    {{ project.github_preview }}
+                </a>
             </li>
             <li class="item" v-if="checkLength(project.web)">
                 <span class="badge primary big">Web</span>
@@ -20,8 +26,18 @@
     </section>
 
     <section v-if="logined == true">
-        <router-link class="button yellow margin" :to="{ name: 'Edit', params: { uuid: $route.params.uuid } }">수정하기</router-link>
-        <router-link class="button red" :to="{ name: 'Delete', params: { uuid: $route.params.uuid } }">삭제하기</router-link>
+        <router-link
+            class="button yellow margin"
+            :to="{ name: 'Edit', params: { uuid: $route.params.uuid } }"
+        >
+            수정하기
+        </router-link>
+        <router-link
+            class="button red"
+            :to="{ name: 'Delete', params: { uuid: $route.params.uuid } }"
+        >
+            삭제하기
+        </router-link>
     </section>
 
     <section class="body" v-if="projectLoad == true">
@@ -42,51 +58,55 @@
     </section>
 
     <section class="tagbox">
-        <router-link class="badge tag" v-for:="tag in project.tags" :to="{ name: 'Tag', params: { tag: tag } }">
+        <router-link
+            class="badge tag"
+            v-for:="tag in project.tags"
+            :to="{ name: 'Tag', params: { tag: tag } }"
+        >
             # {{ tag }}
         </router-link>
     </section>
 </template>
 
 <script>
-import { ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { setOptions, Renderer, parse } from 'marked';
-import axios from 'axios';
-import config from '@/config';
-import { is_login } from '@/check';
+import { ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { setOptions, Renderer, parse } from "marked";
+import axios from "axios";
+import config from "@/config";
+import { is_login } from "@/check";
 
 export default {
-    setup(){
+    setup() {
         const renderer = new Renderer();
         const router = useRouter();
         const projectLoad = ref(false);
         const project = ref({
             content: {
-                a: "", 
+                a: "",
                 b: "",
-                c: ""
+                c: "",
             },
-            date: "", 
+            date: "",
             github: "",
             github_preview: "",
             tag: "",
-            title: "", 
-            web: ""
+            title: "",
+            web: "",
         });
 
         const route = useRoute();
         const uuid = route.params.uuid;
 
-        if(uuid.length != 36){
+        if (uuid.length != 36) {
             router.push({ name: "AboutMe" });
         }
 
-        renderer.link = ( href, title, text ) => {
+        renderer.link = (href, title, text) => {
             let url = new URL(href);
             let target = "_blank";
 
-            if(window.location.host == url.host){
+            if (window.location.host == url.host) {
                 target = "_self";
             }
 
@@ -95,57 +115,59 @@ export default {
 
         setOptions({
             gfm: true,
-            renderer: renderer
+            renderer: renderer,
         });
 
         axios({
             method: "GET",
-            url: config.api.host + `/project/${uuid}`
-        }).then((resp) => {
-            // API에서 불러온 데이터 적용
-            Object.assign(project.value, resp.data);
+            url: config.api.host + `/project/${uuid}`,
+        })
+            .then((resp) => {
+                // API에서 불러온 데이터 적용
+                Object.assign(project.value, resp.data);
 
-            // 마크다운만 렌더링해서 다시 적용
-            const content = resp.data.content;
-            project.value.content = {
-                a: parse(content.a),
-                b: parse(content.b),
-                c: parse(content.c),
-            }
+                // 마크다운만 렌더링해서 다시 적용
+                const content = resp.data.content;
+                project.value.content = {
+                    a: parse(content.a),
+                    b: parse(content.b),
+                    c: parse(content.c),
+                };
 
-            // 프로젝트 로딩 완료
-            projectLoad.value = true;
+                // 프로젝트 로딩 완료
+                projectLoad.value = true;
 
-            if(!is_login() && project.value.title.includes("[작성중]")){
-                if(
-                    confirm("* 해당 프로젝트의 설명은 작성 중입니다.\n" +
-                            "* 메인 페이지로 이동하시겠습니까?")
-                ){
-                    const page = route.query.page;
+                if (!is_login() && project.value.title.includes("[작성중]")) {
+                    if (
+                        confirm(
+                            "* 해당 프로젝트의 설명은 작성 중입니다.\n" +
+                                "* 메인 페이지로 이동하시겠습니까?"
+                        )
+                    ) {
+                        const page = route.query.page;
 
-                    if(page == undefined || Number(page) < 1){
-                        router.push({ name: "AboutMe" });
-                    } else {
-                        router.push({
-                            name: "AboutMe",
-                            page: page
-                        });
+                        if (page == undefined || Number(page) < 1) {
+                            router.push({ name: "AboutMe" });
+                        } else {
+                            router.push({
+                                name: "AboutMe",
+                                page: page,
+                            });
+                        }
                     }
                 }
-            }
-        }).catch((e) => {
-            alert(e.response.data.error.message);
-            router.push({ name: "AboutMe" });
-        });
+            })
+            .catch((e) => {
+                alert(e.response.data.error.message);
+                router.push({ name: "AboutMe" });
+            });
 
-        const checkLength = text => {
-            if(text == null){
+        const checkLength = (text) => {
+            if (text == null) {
                 return false;
-            }
-            else if(text.length == 0){
+            } else if (text.length == 0) {
                 return false;
-            }
-            else{
+            } else {
                 return true;
             }
         };
@@ -155,10 +177,10 @@ export default {
             projectLoad: projectLoad,
             checkLength: checkLength,
 
-            logined: is_login()
-        }
-    }
-}
+            logined: is_login(),
+        };
+    },
+};
 </script>
 
 <style scoped>

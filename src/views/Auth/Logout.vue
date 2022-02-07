@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
 export default {
-    setup(){
+    setup() {
         localStorage.removeItem("mypt_token");
 
         const router = useRouter();
         router.push({ name: "AboutMe" });
-    }
-}
+    },
+};
 </script>

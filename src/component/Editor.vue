@@ -2,23 +2,28 @@
     <div class="editor" v-if="projectLoad == true">
         <ul class="list">
             <li class="item">
-                <b class="badge primary">제목</b> <input type="text" v-model="title">
+                <b class="badge primary">제목</b>
+                <input type="text" v-model="title" />
             </li>
             <li class="item">
-                <b class="badge dark">날짜</b> <input type="date" v-model="date">
+                <b class="badge dark">날짜</b>
+                <input type="date" v-model="date" />
             </li>
             <li class="item">
-                <b class="badge tag">태그</b> <input type="text" v-model="tag">
+                <b class="badge tag">태그</b>
+                <input type="text" v-model="tag" />
             </li>
             <li class="item">
-                <b class="badge dark">Github</b> <input type="url" v-model="github">
+                <b class="badge dark">Github</b>
+                <input type="url" v-model="github" />
             </li>
             <li class="item">
-                <b class="badge primary">Web</b> <input type="url" v-model="web">
+                <b class="badge primary">Web</b>
+                <input type="url" v-model="web" />
             </li>
         </ul>
 
-        <br>
+        <br />
 
         <h2 class="title two">기획의도</h2>
         <textarea v-model="a" @focus="resize" @input="resize"></textarea>
@@ -36,29 +41,30 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import axios from 'axios';
-import config from '@/config';
+import { ref } from "vue";
+import axios from "axios";
+import config from "@/config";
 
 export default {
     name: "Editor",
     props: {
         uuid: String,
     },
-    setup(props){
-        const UUID   = ref(props.uuid);
-        const title  = ref();
-        const date   = ref();
-        const tag    = ref();
+    setup(props) {
+        const UUID = ref(props.uuid);
+        const title = ref();
+        const date = ref();
+        const tag = ref();
         const github = ref();
-        const web    = ref();
-        const a      = ref();
-        const b      = ref();
-        const c      = ref();
+        const web = ref();
+        const a = ref();
+        const b = ref();
+        const c = ref();
         const projectLoad = ref(false);
 
         const resize = (element) => {
-            element.target.style.height = element.target.scrollHeight - 4 + 'px';
+            element.target.style.height =
+                element.target.scrollHeight - 4 + "px";
         };
 
         const fetchProject = () => {
@@ -66,27 +72,29 @@ export default {
 
             axios({
                 method: "GET",
-                url: config.api.host + `/project/${UUID.value}`
-            }).then((e) => {
-                const data = e.data;
+                url: config.api.host + `/project/${UUID.value}`,
+            })
+                .then((e) => {
+                    const data = e.data;
 
-                title.value  = data.title;
-                date.value   = data.dt;
-                tag.value    = data.tags.join(", ");
-                github.value = data.github;
-                web.value    = data.web;
-                a.value      = data.content.a;
-                b.value      = data.content.b;
-                c.value      = data.content.c;
+                    title.value = data.title;
+                    date.value = data.dt;
+                    tag.value = data.tags.join(", ");
+                    github.value = data.github;
+                    web.value = data.web;
+                    a.value = data.content.a;
+                    b.value = data.content.b;
+                    c.value = data.content.c;
 
-                projectLoad.value = true;
-            }).catch((e) => {
-                alert("프로젝트 로드중 오류 발생");
-                console.error(e);
-            });
+                    projectLoad.value = true;
+                })
+                .catch((e) => {
+                    alert("프로젝트 로드중 오류 발생");
+                    console.error(e);
+                });
         };
 
-        if(UUID.value.length == 36){
+        if (UUID.value.length == 36) {
             fetchProject();
         } else {
             projectLoad.value = true;
@@ -95,14 +103,14 @@ export default {
         const saveProject = () => {
             const token = localStorage.getItem("mypt_token");
             const data = {
-                title:  title.value,
-                date:   date.value,
-                tag:    tag.value,
+                title: title.value,
+                date: date.value,
+                tag: tag.value,
                 github: github.value,
-                web:    web.value,
-                a:      a.value,
-                b:      b.value,
-                c:      c.value
+                web: web.value,
+                a: a.value,
+                b: b.value,
+                c: c.value,
             };
 
             axios({
@@ -111,42 +119,44 @@ export default {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                data: data
-            }).then((e) => {
-                if(e.data.uuid != undefined){
-                    UUID.value = e.data.uuid;
-                }
+                data: data,
+            })
+                .then((e) => {
+                    if (e.data.uuid != undefined) {
+                        UUID.value = e.data.uuid;
+                    }
 
-                alert(e.data.message);
-                fetchProject();
-            }).catch((e) => {
-                const code = e.response.status;
-                const data = e.response.data;
+                    alert(e.data.message);
+                    fetchProject();
+                })
+                .catch((e) => {
+                    const code = e.response.status;
+                    const data = e.response.data;
 
-                if(code == 404){
-                    alert(data.error.message);
-                } else {
-                    alert(code + ": " + data.message);
-                }
-            });
+                    if (code == 404) {
+                        alert(data.error.message);
+                    } else {
+                        alert(code + ": " + data.message);
+                    }
+                });
         };
 
         return {
-            title:  title,
-            date:   date,
-            tag:    tag,
+            title: title,
+            date: date,
+            tag: tag,
             github: github,
-            web:    web,
-            a:      a,
-            b:      b,
-            c:      c,
+            web: web,
+            a: a,
+            b: b,
+            c: c,
             projectLoad: projectLoad,
 
             resize: resize,
-            saveProject: saveProject
-        }
-    }
-}
+            saveProject: saveProject,
+        };
+    },
+};
 </script>
 
 <style scoped>
@@ -159,7 +169,7 @@ export default {
 }
 
 .editor > .list > .item > input {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 16px;
     border: none;
     width: calc(100% - 120px);
@@ -171,7 +181,7 @@ export default {
 }
 
 .editor > textarea {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 16px;
     width: 100%;
     border: none;
@@ -185,7 +195,7 @@ export default {
     padding-top: 40px;
 }
 
-.tools > .save{
+.tools > .save {
     flex: 1;
     font-size: 16px;
 }

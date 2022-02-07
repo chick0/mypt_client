@@ -6,49 +6,49 @@
 </template>
 
 <script>
-import { useRouter } from 'vue-router';
-import axios from 'axios';
-import config from '@/config';
+import { useRouter } from "vue-router";
+import axios from "axios";
+import config from "@/config";
 
 export default {
-    setup(){
+    setup() {
         const router = useRouter();
 
-        if(localStorage.getItem("mypt_token") == null){
+        if (localStorage.getItem("mypt_token") == null) {
             axios({
                 method: "GET",
-                url: config.api.host + '/auth/get-url'
-            }).then((e) => {
-                const urls = e.data;
-                const url = urls[config.auth.service];
+                url: config.api.host + "/auth/get-url",
+            })
+                .then((e) => {
+                    const urls = e.data;
+                    const url = urls[config.auth.service];
 
-                if(url == undefined){
+                    if (url == undefined) {
+                        alert(
+                            "* 지원하지 않는 로그인 서비스 입니다.\n" +
+                                "* API 서버를 확인해주세요.\n" +
+                                "* 메인화면으로 이동합니다."
+                        );
+
+                        router.push({ name: "AboutMe" });
+                    } else {
+                        location.replace(url);
+                    }
+                })
+                .catch((e) => {
                     alert(
-                        "* 지원하지 않는 로그인 서비스 입니다.\n" +
-                        "* API 서버를 확인해주세요.\n" +
-                        "* 메인화면으로 이동합니다."
+                        "* API 서버에서 OAuth 정보를 불러오는데 실패했습니다.\n" +
+                            "* 메인화면으로 이동합니다."
                     );
 
                     router.push({ name: "AboutMe" });
-                } else {
-                    location.replace(url);
-                }
-            }).catch((e) => {
-                alert(
-                    "* API 서버에서 OAuth 정보를 불러오는데 실패했습니다.\n" +
-                    "* 메인화면으로 이동합니다."
-                );
-
-                router.push({ name: "AboutMe" });
-                console.error(e);
-            });
+                    console.error(e);
+                });
         } else {
-            alert(
-                "* 이미 로그인 되어있습니다."
-            );
+            alert("* 이미 로그인 되어있습니다.");
 
             router.push({ name: "AboutMe" });
         }
-    }
-}
+    },
+};
 </script>

@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
-import { useLoading } from 'vue-loading-overlay';
-import axios from 'axios';
+import { ref, watch } from "vue";
+import { useLoading } from "vue-loading-overlay";
+import axios from "axios";
 
 export default {
-    setup(){
+    setup() {
         // 스피너 객체를 보관하는 변수
         const loading = useLoading();
         let loadingObj = undefined;
@@ -22,13 +22,13 @@ export default {
 
         // 스피너 핸들러
         watch(spinner, (need_spin) => {
-            if(need_spin){
+            if (need_spin) {
                 loadingObj = loading.show({
                     color: "#FFCC4D",
                     canCancel: false,
                 });
             } else {
-                if(loadingObj != undefined){
+                if (loadingObj != undefined) {
                     loadingObj.hide();
                 }
             }
@@ -36,18 +36,28 @@ export default {
 
         // axios 요청 시작시 스피너 보이기
         // 오류나거나 요청이 끝나면 스피터 숨기기
-        axios.interceptors.request.use(config => {
-            spinner.value = true;   return config;
-        }, error => {
-            spinner.value = false;  return Promise.reject(error);
-        });
+        axios.interceptors.request.use(
+            (config) => {
+                spinner.value = true;
+                return config;
+            },
+            (error) => {
+                spinner.value = false;
+                return Promise.reject(error);
+            }
+        );
 
-        axios.interceptors.response.use(response => {
-            spinner.value = false;  return response;
-        }, error => {
-            spinner.value = false;  return Promise.reject(error);
-        });
-    }
+        axios.interceptors.response.use(
+            (response) => {
+                spinner.value = false;
+                return response;
+            },
+            (error) => {
+                spinner.value = false;
+                return Promise.reject(error);
+            }
+        );
+    },
 };
 </script>
 

@@ -10,17 +10,23 @@
         <ul class="list">
             <li class="item">
                 <span class="badge dark big">Github</span>
-                <a :href="about_me.github" target="_blank" rel="noreferrer">{{ about_me.github }}</a>
+                <a :href="about_me.github" target="_blank" rel="noreferrer">
+                    {{ about_me.github }}
+                </a>
             </li>
             <li class="item">
                 <span class="badge primary big">E-Mail</span>
-                <a :href="'mailto:'+about_me.email" target="_blank">{{ about_me.email }}</a>
+                <a :href="'mailto:' + about_me.email" target="_blank">
+                    {{ about_me.email }}
+                </a>
             </li>
         </ul>
     </section>
 
     <section v-if="loginStatus == true">
-        <router-link class="button" :to="{ name: 'Write' }">프로젝트 등록하기</router-link>
+        <router-link class="button" :to="{ name: 'Write' }">
+            프로젝트 등록하기
+        </router-link>
     </section>
 
     <section>
@@ -29,30 +35,30 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue';
-import Projects from '@/component/Projects.vue';
-import config from '@/config';
-import { is_login } from '@/check';
-import axios from 'axios';
+import { ref, watch } from "vue";
+import Projects from "@/component/Projects.vue";
+import config from "@/config";
+import { is_login } from "@/check";
+import axios from "axios";
 
 export default {
     components: {
-        Projects
+        Projects,
     },
-    setup(){
+    setup() {
         const loginUI = ref(false);
         const loginCounter = ref(0);
         const loginStatus = ref(false);
 
         watch(loginCounter, () => {
-            if(loginCounter.value >= 3){
+            if (loginCounter.value >= 3) {
                 loginUI.value = true;
             } else {
                 loginUI.value = false;
             }
         });
 
-        if(is_login()){
+        if (is_login()) {
             const token = localStorage.getItem("mypt_token");
             axios({
                 method: "GET",
@@ -60,15 +66,17 @@ export default {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-            }).then(() => {
-                loginStatus.value = true;
-            }).catch((e) => {
-                const code = e.response.status;
-                const data = e.response.data.message;
+            })
+                .then(() => {
+                    loginStatus.value = true;
+                })
+                .catch((e) => {
+                    const code = e.response.status;
+                    const data = e.response.data.message;
 
-                alert(`${code}: ${data}`);
-                localStorage.removeItem("mypt_token");
-            });
+                    alert(`${code}: ${data}`);
+                    localStorage.removeItem("mypt_token");
+                });
         }
 
         return {
@@ -77,10 +85,10 @@ export default {
 
             loginUI,
             loginCounter,
-            loginStatus
-        }
+            loginStatus,
+        };
     },
-}
+};
 </script>
 
 <style scoped>
