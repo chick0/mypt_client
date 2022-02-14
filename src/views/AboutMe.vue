@@ -37,7 +37,7 @@
 <script>
 import { ref, watch } from "vue";
 import Projects from "@/component/Projects.vue";
-import config from "@/config";
+import { api, about_me } from "@/config";
 import { is_login } from "@/check";
 import axios from "axios";
 
@@ -62,7 +62,7 @@ export default {
             const token = localStorage.getItem("mypt_token");
             axios({
                 method: "GET",
-                url: config.api.host + `/auth/test`,
+                url: api.host + `/auth/test`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -80,7 +80,7 @@ export default {
         }
 
         return {
-            about_me: config.about_me,
+            about_me,
             path: "/projects",
 
             loginUI,

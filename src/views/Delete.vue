@@ -8,7 +8,7 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import { gate_check } from "@/check";
-import config from "@/config";
+import { api } from "@/config";
 import axios from "axios";
 
 export default {
@@ -23,7 +23,7 @@ export default {
             if (confirm("* 프로젝트를 삭제할까요?")) {
                 axios({
                     method: "DELETE",
-                    url: config.api.host + `/manage/${uuid}`,
+                    url: api.host + `/manage/${uuid}`,
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },

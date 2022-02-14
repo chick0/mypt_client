@@ -8,7 +8,7 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
-import config from "@/config";
+import { api, auth } from "@/config";
 
 export default {
     setup() {
@@ -21,9 +21,7 @@ export default {
         } else {
             axios({
                 method: "GET",
-                url:
-                    config.api.host +
-                    `/auth/${config.auth.service}/callback?code=${code}`,
+                url: api.host + `/auth/${auth.service}/callback?code=${code}`,
             })
                 .then((e) => {
                     const token = e.data.token;

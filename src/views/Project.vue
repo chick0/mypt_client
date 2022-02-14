@@ -73,7 +73,7 @@ import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { setOptions, Renderer, parse } from "marked";
 import axios from "axios";
-import config from "@/config";
+import { api } from "@/config";
 import { is_login } from "@/check";
 
 export default {
@@ -120,7 +120,7 @@ export default {
 
         axios({
             method: "GET",
-            url: config.api.host + `/project/${uuid}`,
+            url: api.host + `/project/${uuid}`,
         })
             .then((resp) => {
                 // API에서 불러온 데이터 적용
@@ -173,9 +173,9 @@ export default {
         };
 
         return {
-            project: project,
-            projectLoad: projectLoad,
-            checkLength: checkLength,
+            project,
+            projectLoad,
+            checkLength,
 
             logined: is_login(),
         };

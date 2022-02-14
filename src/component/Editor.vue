@@ -43,7 +43,7 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-import config from "@/config";
+import { api } from "@/config";
 
 export default {
     name: "Editor",
@@ -72,7 +72,7 @@ export default {
 
             axios({
                 method: "GET",
-                url: config.api.host + `/project/${UUID.value}`,
+                url: api.host + `/project/${UUID.value}`,
             })
                 .then((e) => {
                     const data = e.data;
@@ -115,7 +115,7 @@ export default {
 
             axios({
                 method: "POST",
-                url: config.api.host + `/manage/${UUID.value}`,
+                url: api.host + `/manage/${UUID.value}`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

@@ -32,7 +32,7 @@
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
-import config from "@/config";
+import { api } from "@/config";
 
 export default {
     name: "Projects",
@@ -53,7 +53,7 @@ export default {
 
         // 프로젝트 불러올 함수
         const fetchProjects = () => {
-            let url = config.api.host + props.path;
+            let url = api.host + props.path;
             if (!url.includes("page=")) {
                 if (url.includes("?")) {
                     url += `&page=${page.value}`;

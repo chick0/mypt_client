@@ -8,7 +8,7 @@
 <script>
 import { useRouter } from "vue-router";
 import axios from "axios";
-import config from "@/config";
+import { api, auth } from "@/config";
 
 export default {
     setup() {
@@ -17,11 +17,11 @@ export default {
         if (localStorage.getItem("mypt_token") == null) {
             axios({
                 method: "GET",
-                url: config.api.host + "/auth/get-url",
+                url: api.host + "/auth/get-url",
             })
                 .then((e) => {
                     const urls = e.data;
-                    const url = urls[config.auth.service];
+                    const url = urls[auth.service];
 
                     if (url == undefined) {
                         alert(
