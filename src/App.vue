@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style>
-/*  */
+/* Base */
 @import "./css/color.css";
 @import "./css/main.css";
 @import "./css/title.css";
