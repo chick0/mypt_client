@@ -35,7 +35,7 @@ import axios from "axios";
 import { api } from "@/config";
 
 export default {
-    name: "Projects",
+    name: "ProjectList",
     props: {
         path: String,
     },

@@ -77,6 +77,7 @@ import { api } from "@/config";
 import { is_login } from "@/check";
 
 export default {
+    name: "view-project",
     setup() {
         const renderer = new Renderer();
         const router = useRouter();

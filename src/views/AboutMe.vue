@@ -42,6 +42,7 @@ import { is_login } from "@/check";
 import axios from "axios";
 
 export default {
+    name: "about-me",
     components: {
         Projects,
     },

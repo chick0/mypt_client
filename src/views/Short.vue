@@ -9,6 +9,7 @@
 import { useRoute, useRouter } from "vue-router";
 
 export default {
+    name: "move-to-project",
     setup() {
         const route = useRoute();
         const router = useRouter();

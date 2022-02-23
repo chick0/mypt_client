@@ -46,7 +46,7 @@ import axios from "axios";
 import { api } from "@/config";
 
 export default {
-    name: "Editor",
+    name: "ProjectEditor",
     props: {
         uuid: String,
     },

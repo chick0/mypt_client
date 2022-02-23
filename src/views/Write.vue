@@ -15,6 +15,7 @@ import Editor from "@/component/Editor.vue";
 import { gate_check } from "@/check";
 
 export default {
+    name: "write-project",
     components: {
         Editor,
     },

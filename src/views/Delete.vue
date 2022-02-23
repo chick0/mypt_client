@@ -12,6 +12,7 @@ import { api } from "@/config";
 import axios from "axios";
 
 export default {
+    name: "remove-project",
     setup() {
         // gate_check
         if (gate_check()) {

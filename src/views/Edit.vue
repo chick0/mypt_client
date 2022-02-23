@@ -18,6 +18,7 @@ import { useRoute, useRouter } from "vue-router";
 import { gate_check } from "@/check";
 
 export default {
+    name: "project-edit",
     components: {
         Editor,
     },

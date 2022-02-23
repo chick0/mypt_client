@@ -9,6 +9,7 @@
 import { useRouter } from "vue-router";
 
 export default {
+    name: "remove-token",
     setup() {
         localStorage.removeItem("mypt_token");
 

@@ -11,6 +11,7 @@ import axios from "axios";
 import { api, auth } from "@/config";
 
 export default {
+    name: "move-to-oauth",
     setup() {
         const router = useRouter();
 

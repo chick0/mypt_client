@@ -11,6 +11,7 @@ import axios from "axios";
 import { api, auth } from "@/config";
 
 export default {
+    name: "callback-from-oauth",
     setup() {
         const route = useRoute();
         const router = useRouter();

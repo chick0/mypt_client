@@ -32,6 +32,7 @@ import { useRoute } from "vue-router";
 import Projects from "@/component/Projects.vue";
 
 export default {
+    name: "show-projects-by-tag",
     components: {
         Projects,
     },
