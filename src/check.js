@@ -11,7 +11,7 @@ export function gate_check() {
         const router = useRouter();
 
         alert("로그인 상태가 아닙니다.");
-        router.push({ name: "AboutMe" });
+        router.push({ name: "Home" });
 
         return false;
     } else {

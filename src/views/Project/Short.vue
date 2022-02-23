@@ -18,10 +18,10 @@ export default {
 
         console.log(`uuid = ${uuid}`);
         if (uuid.length != 36) {
-            router.push({ name: "AboutMe" });
+            router.push({ name: "Home" });
         } else {
             router.push({
-                name: "Project",
+                name: "Project.View",
                 params: {
                     uuid: uuid,
                 },

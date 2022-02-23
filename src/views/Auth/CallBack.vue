@@ -18,18 +18,22 @@ export default {
         const code = route.query.code;
 
         if (code == undefined) {
-            router.push({ name: "AboutMe" });
+            router.push({ name: "Home" });
         } else {
             axios({
                 method: "GET",
-                url: api.host + `/auth/${auth.service}/callback?code=${code}`,
+                baseURL: api.host,
+                url: `/auth/${auth.service}/callback`,
+                params: {
+                    code: code,
+                },
             })
                 .then((e) => {
                     const token = e.data.token;
                     localStorage.setItem("mypt_token", token);
 
                     alert("로그인 성공");
-                    router.push({ name: "AboutMe" });
+                    router.push({ name: "Home" });
                 })
                 .catch((e) => {
                     console.error(e);
@@ -39,7 +43,7 @@ export default {
                         "* 해당 계정은 로그인 할 수 없습니다.\n" +
                             "* 메인화면으로 이동합니다."
                     );
-                    router.push({ name: "AboutMe" });
+                    router.push({ name: "Home" });
                 });
         }
     },

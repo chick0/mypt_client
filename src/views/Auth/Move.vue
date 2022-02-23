@@ -18,7 +18,8 @@ export default {
         if (localStorage.getItem("mypt_token") == null) {
             axios({
                 method: "GET",
-                url: api.host + "/auth/get-url",
+                baseURL: api.host,
+                url: "/auth/get-url",
             })
                 .then((e) => {
                     const urls = e.data;
@@ -31,7 +32,7 @@ export default {
                                 "* 메인화면으로 이동합니다."
                         );
 
-                        router.push({ name: "AboutMe" });
+                        router.push({ name: "Home" });
                     } else {
                         location.replace(url);
                     }
@@ -42,13 +43,13 @@ export default {
                             "* 메인화면으로 이동합니다."
                     );
 
-                    router.push({ name: "AboutMe" });
+                    router.push({ name: "Home" });
                     console.error(e);
                 });
         } else {
             alert("* 이미 로그인 되어있습니다.");
 
-            router.push({ name: "AboutMe" });
+            router.push({ name: "Home" });
         }
     },
 };

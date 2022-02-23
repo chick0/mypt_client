@@ -1,8 +1,6 @@
 <template>
     <section class="fixed-top">
-        <router-link
-            :to="{ name: 'AboutMe', query: { page: $route.query.page } }"
-        >
+        <router-link :to="{ name: 'Home', query: { page: $route.query.page } }">
             ← 메인 페이지로 돌아가기
         </router-link>
     </section>
@@ -28,13 +26,16 @@
     <section v-if="logined == true">
         <router-link
             class="button yellow margin"
-            :to="{ name: 'Edit', params: { uuid: $route.params.uuid } }"
+            :to="{ name: 'Project.Edit', params: { uuid: $route.params.uuid } }"
         >
             수정하기
         </router-link>
         <router-link
             class="button red"
-            :to="{ name: 'Delete', params: { uuid: $route.params.uuid } }"
+            :to="{
+                name: 'Project.Delete',
+                params: { uuid: $route.params.uuid },
+            }"
         >
             삭제하기
         </router-link>
@@ -61,7 +62,7 @@
         <router-link
             class="badge tag"
             v-for:="tag in project.tags"
-            :to="{ name: 'Tag', params: { tag: tag } }"
+            :to="{ name: 'Tag.View', params: { tag: tag } }"
         >
             # {{ tag }}
         </router-link>
@@ -100,7 +101,7 @@ export default {
         const uuid = route.params.uuid;
 
         if (uuid.length != 36) {
-            router.push({ name: "AboutMe" });
+            router.push({ name: "Home" });
         }
 
         renderer.link = (href, title, text) => {
@@ -121,7 +122,8 @@ export default {
 
         axios({
             method: "GET",
-            url: api.host + `/project/${uuid}`,
+            baseURL: api.host,
+            url: `/project/${uuid}`,
         })
             .then((resp) => {
                 // API에서 불러온 데이터 적용
@@ -148,10 +150,10 @@ export default {
                         const page = route.query.page;
 
                         if (page == undefined || Number(page) < 1) {
-                            router.push({ name: "AboutMe" });
+                            router.push({ name: "Home" });
                         } else {
                             router.push({
-                                name: "AboutMe",
+                                name: "Home",
                                 page: page,
                             });
                         }
@@ -160,7 +162,7 @@ export default {
             })
             .catch((e) => {
                 alert(e.response.data.error.message);
-                router.push({ name: "AboutMe" });
+                router.push({ name: "Home" });
             });
 
         const checkLength = (text) => {

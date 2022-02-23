@@ -3,75 +3,83 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: "/",
-        name: "AboutMe",
+        name: "Home",
         component: () =>
-            import(/* webpackChunkName: "home" */ "@/views/AboutMe.vue"),
+            import(/* webpackChunkName: "home" */ "@/views/Home.vue"),
     },
 
     // Auth part
     {
         path: "/auth",
-        name: "Auth",
+        name: "Auth.Move",
         component: () =>
-            import(/* webpackChunkName: "auth" */ "@/views/Auth/Auth.vue"),
+            import(/* webpackChunkName: "auth" */ "@/views/Auth/Move.vue"),
     },
     {
         path: "/auth/logout",
-        name: "Logout",
+        name: "Auth.Logout",
         component: () =>
             import(/* webpackChunkName: "auth" */ "@/views/Auth/Logout.vue"),
     },
     {
         path: "/auth/callback",
-        name: "CallBack",
+        // name: "Auth.Callback",
         component: () =>
-            import(/* webpackChunkName: "auth" */ "@/views/Auth/CallBack.vue"),
+            import(/* webpackChunkName: "auth" */ "@/views/Auth/Callback.vue"),
     },
 
     // Tag part
     {
         path: "/tag/:tag(.*)*", // 한글 인식 이슈
-        name: "Tag",
+        name: "Tag.View",
         component: () =>
-            import(/* webpackChunkName: "tag" */ "@/views/Tag.vue"),
+            import(/* webpackChunkName: "tag" */ "@/views/Tag/View.vue"),
         props: true,
     },
 
     // Project part
     {
         path: "/project/:uuid",
-        name: "Project",
+        name: "Project.View",
         component: () =>
-            import(/* webpackChunkName: "project" */ "@/views/Project.vue"),
+            import(
+                /* webpackChunkName: "project" */ "@/views/Project/View.vue"
+            ),
         props: true,
     },
     {
         path: "/:uuid",
-        name: "Short",
+        name: "Project.Short",
         component: () =>
-            import(/* webpackChunkName: "project" */ "@/views/Short.vue"),
+            import(
+                /* webpackChunkName: "project" */ "@/views/Project/Short.vue"
+            ),
         props: true,
     },
 
-    // Editor part
+    // Project manage part
     {
         path: "/write",
-        name: "Write",
+        name: "Project.Write",
         component: () =>
-            import(/* webpackChunkName: "editor" */ "@/views/Write.vue"),
+            import(
+                /* webpackChunkName: "manage" */ "@/views/Project/Write.vue"
+            ),
     },
     {
         path: "/project/:uuid/edit",
-        name: "Edit",
+        name: "Project.Edit",
         component: () =>
-            import(/* webpackChunkName: "editor" */ "@/views/Edit.vue"),
+            import(/* webpackChunkName: "manage" */ "@/views/Project/Edit.vue"),
         props: true,
     },
     {
         path: "/project/:uuid/delete",
-        name: "Delete",
+        name: "Project.Delete",
         component: () =>
-            import(/* webpackChunkName: "editor" */ "@/views/Delete.vue"),
+            import(
+                /* webpackChunkName: "manage" */ "@/views/Project/Delete.vue"
+            ),
         props: true,
     },
 

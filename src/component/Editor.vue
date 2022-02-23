@@ -72,7 +72,8 @@ export default {
 
             axios({
                 method: "GET",
-                url: api.host + `/project/${UUID.value}`,
+                baseURL: api.host,
+                url: `/project/${UUID.value}`,
             })
                 .then((e) => {
                     const data = e.data;
@@ -115,7 +116,8 @@ export default {
 
             axios({
                 method: "POST",
-                url: api.host + `/manage/${UUID.value}`,
+                baseURL: api.host,
+                url: `/manage/${UUID.value}`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

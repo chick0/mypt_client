@@ -14,7 +14,7 @@ export default {
         localStorage.removeItem("mypt_token");
 
         const router = useRouter();
-        router.push({ name: "AboutMe" });
+        router.push({ name: "Home" });
     },
 };
 </script>

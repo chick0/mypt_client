@@ -12,7 +12,7 @@
                 <router-link
                     class="badge tag"
                     v-for:="tag in project.tags"
-                    :to="{ name: 'Tag', params: { tag: tag } }"
+                    :to="{ name: 'Tag.View', params: { tag: tag } }"
                 >
                     # {{ tag }}
                 </router-link>
@@ -53,19 +53,14 @@ export default {
 
         // 프로젝트 불러올 함수
         const fetchProjects = () => {
-            let url = api.host + props.path;
-            if (!url.includes("page=")) {
-                if (url.includes("?")) {
-                    url += `&page=${page.value}`;
-                } else {
-                    url += `?page=${page.value}`;
-                }
-            }
-
             if (page.value > 0) {
                 axios({
                     method: "GET",
-                    url: url,
+                    baseURL: api.host,
+                    url: props.path,
+                    params: {
+                        page: page.value,
+                    },
                 })
                     .then((e) => {
                         page.value = e.data.page.this;
@@ -100,7 +95,7 @@ export default {
                             "* 메인 페이지로 이동하시겠습니까?"
                     )
                 ) {
-                    router.push({ name: "AboutMe" });
+                    router.push({ name: "Home" });
                 }
             }
         });
@@ -111,7 +106,7 @@ export default {
         // :to 링크 생성기
         const fetchUrl = (uuid) => {
             let url = {
-                name: "Project",
+                name: "Project.View",
                 params: {
                     uuid: uuid,
                 },

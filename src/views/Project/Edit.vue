@@ -1,7 +1,7 @@
 <template>
     <section class="fixed-top">
         <router-link
-            :to="{ name: 'Project', query: { uuid: $route.params.uuid } }"
+            :to="{ name: 'Project.View', query: { uuid: $route.params.uuid } }"
         >
             ← 프로젝트로 돌아가기
         </router-link>
@@ -30,7 +30,7 @@ export default {
             const UUID = route.params.uuid;
 
             if (UUID.length != 36) {
-                router.push({ name: "AboutMe" });
+                router.push({ name: "Home" });
             }
 
             return {

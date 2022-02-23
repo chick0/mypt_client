@@ -3,8 +3,8 @@
         <h1 class="title one" @click="loginCounter++">{{ about_me.name }}</h1>
 
         <div v-if="loginUI == true">
-            <router-link :to="{ name: 'Auth' }">로그인</router-link> |
-            <router-link :to="{ name: 'Logout' }">로그아웃</router-link>
+            <router-link :to="{ name: 'Auth.Move' }">로그인</router-link> |
+            <router-link :to="{ name: 'Auth.Logout' }">로그아웃</router-link>
         </div>
 
         <ul class="list">
@@ -24,7 +24,7 @@
     </section>
 
     <section v-if="loginStatus == true">
-        <router-link class="button" :to="{ name: 'Write' }">
+        <router-link class="button" :to="{ name: 'Project.Write' }">
             프로젝트 등록하기
         </router-link>
     </section>
@@ -63,7 +63,8 @@ export default {
             const token = localStorage.getItem("mypt_token");
             axios({
                 method: "GET",
-                url: api.host + `/auth/test`,
+                baseURL: api.host,
+                url: `/auth/test`,
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
