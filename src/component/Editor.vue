@@ -89,7 +89,7 @@ export default {
 
                     projectLoad.value = true;
                 })
-                .catch((e) => {
+                .catch(() => {
                     alert("프로젝트 로드중 오류 발생");
                 });
         };
