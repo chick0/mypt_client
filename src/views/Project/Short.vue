@@ -16,7 +16,6 @@ export default {
         const uuid = route.params.uuid;
         const page = route.query.page;
 
-        console.log(`uuid = ${uuid}`);
         if (uuid.length != 36) {
             router.push({ name: "Home" });
         } else {

@@ -37,14 +37,13 @@ export default {
                         location.replace(url);
                     }
                 })
-                .catch((e) => {
+                .catch(() => {
                     alert(
                         "* API 서버에서 OAuth 정보를 불러오는데 실패했습니다.\n" +
                             "* 메인화면으로 이동합니다."
                     );
 
                     router.push({ name: "Home" });
-                    console.error(e);
                 });
         } else {
             alert("* 이미 로그인 되어있습니다.");

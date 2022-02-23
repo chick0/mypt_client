@@ -35,10 +35,7 @@ export default {
                     alert("로그인 성공");
                     router.push({ name: "Home" });
                 })
-                .catch((e) => {
-                    console.error(e);
-                    console.log(e.response.data);
-
+                .catch(() => {
                     alert(
                         "* 해당 계정은 로그인 할 수 없습니다.\n" +
                             "* 메인화면으로 이동합니다."
