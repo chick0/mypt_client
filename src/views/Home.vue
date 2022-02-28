@@ -29,17 +29,21 @@
         </router-link>
     </section>
 
+    <section class="markdown" v-html="html"></section>
+
     <section>
         <Projects :path="path"></Projects>
     </section>
 </template>
 
 <script>
+import axios from "axios";
 import { ref, watch } from "vue";
+import { parse } from "marked";
 import Projects from "@/component/Projects.vue";
 import { api, about_me } from "@/config";
 import { is_login } from "@/check";
-import axios from "axios";
+import { getMarkdown } from "@/me";
 
 export default {
     name: "about-me",
@@ -88,6 +92,8 @@ export default {
             loginUI,
             loginCounter,
             loginStatus,
+
+            html: parse(getMarkdown()),
         };
     },
 };
@@ -104,5 +110,10 @@ export default {
 .aboutme > .list > .item > .badge {
     width: 50px !important;
     margin-right: 10px !important;
+}
+
+/* markdown */
+.markdown {
+    font-size: 18px;
 }
 </style>
