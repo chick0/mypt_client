@@ -3,14 +3,16 @@
     --hover: rgb(255, 204, 77, 0.1);
     --selection: rgb(243, 150, 154);
 
-    --blue: rgb(0, 110, 255);
     --white: rgb(255, 255, 255);
     --black: rgb(0, 0, 0);
     --gray: rgb(0, 0, 0, 0.5);
 
+    --blue: rgb(0, 110, 255);
+    --blue-: rgb(0, 98, 226);
+
     --yellow: rgb(255, 193, 7);
-    --yellow-: rgb(255, 202, 44);
+    --yellow-: rgb(245, 180, 7);
 
     --red: rgb(220, 53, 69);
-    --red-: rgb(187, 45, 59);
+    --red-: rgb(190, 48, 69);
 }

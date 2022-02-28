@@ -11,8 +11,10 @@
 }
 
 .button:hover{
-    color: var(--blue);
-    background-color: var(--white);
+    color: var(--white);
+    background-color: var(--blue-);
+
+    border: var(--blue-) solid 1px;
 }
 
 .button.margin {
