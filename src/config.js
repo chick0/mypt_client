@@ -1,5 +1,8 @@
 export const api = {
-    host: "https://mypt.ch1ck.xyz",
+    host:
+        process.env.NODE_ENV === "production"
+            ? "https://mypt.ch1ck.xyz"
+            : "http://localhost:5000",
 };
 
 export const about_me = {
