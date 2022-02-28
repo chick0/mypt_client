@@ -8,7 +8,7 @@
 <script>
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
-import { api, auth } from "@/config";
+import { auth } from "@/config";
 import { doLogin } from "@/login";
 
 export default {
@@ -23,7 +23,6 @@ export default {
         } else {
             axios({
                 method: "GET",
-                baseURL: api.host,
                 url: `/auth/${auth.service}/callback`,
                 params: {
                     code: code,

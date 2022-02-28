@@ -8,7 +8,6 @@
 <script>
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
-import { api } from "@/config";
 import { isLogin, getToken } from "@/login";
 
 export default {
@@ -27,7 +26,6 @@ export default {
         if (confirm("* 프로젝트를 삭제할까요?")) {
             axios({
                 method: "DELETE",
-                baseURL: api.host,
                 url: `/manage/${uuid}`,
                 headers: {
                     Authorization: `Bearer ${token}`,

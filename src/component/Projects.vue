@@ -29,10 +29,9 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import axios from "axios";
-import { api } from "@/config";
 
 export default {
     name: "ProjectList",
@@ -56,7 +55,6 @@ export default {
             if (page.value > 0) {
                 axios({
                     method: "GET",
-                    baseURL: api.host,
                     url: props.path,
                     params: {
                         page: page.value,

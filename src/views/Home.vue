@@ -41,7 +41,7 @@ import axios from "axios";
 import { ref, watch } from "vue";
 import { parse } from "marked";
 import Projects from "@/component/Projects.vue";
-import { api, aboutMe } from "@/config";
+import { aboutMe } from "@/config";
 import { isLogin, getToken, clearLogin } from "@/login";
 import { getMarkdown } from "@/me";
 
@@ -67,7 +67,6 @@ export default {
             const token = getToken();
             axios({
                 method: "GET",
-                baseURL: api.host,
                 url: `/auth/test`,
                 headers: {
                     Authorization: `Bearer ${token}`,

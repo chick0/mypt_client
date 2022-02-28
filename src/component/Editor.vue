@@ -43,7 +43,6 @@
 <script>
 import { ref } from "vue";
 import axios from "axios";
-import { api } from "@/config";
 import { getToken } from "@/login";
 
 export default {
@@ -73,7 +72,6 @@ export default {
 
             axios({
                 method: "GET",
-                baseURL: api.host,
                 url: `/project/${UUID.value}`,
             })
                 .then((e) => {
@@ -116,7 +114,6 @@ export default {
 
             axios({
                 method: "POST",
-                baseURL: api.host,
                 url: `/manage/${UUID.value}`,
                 headers: {
                     Authorization: `Bearer ${token}`,

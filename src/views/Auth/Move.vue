@@ -6,9 +6,9 @@
 </template>
 
 <script>
-import { useRouter } from "vue-router";
 import axios from "axios";
-import { api, auth } from "@/config";
+import { useRouter } from "vue-router";
+import { auth } from "@/config";
 import { getToken } from "@/login";
 
 export default {
@@ -20,7 +20,6 @@ export default {
         if (token == null) {
             axios({
                 method: "GET",
-                baseURL: api.host,
                 url: "/auth/get-url",
             })
                 .then((e) => {

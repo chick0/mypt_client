@@ -70,11 +70,10 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { setOptions, Renderer, parse } from "marked";
-import axios from "axios";
-import { api } from "@/config";
 import { isLogin } from "@/login";
 
 export default {
@@ -122,7 +121,6 @@ export default {
 
         axios({
             method: "GET",
-            baseURL: api.host,
             url: `/project/${uuid}`,
         })
             .then((resp) => {

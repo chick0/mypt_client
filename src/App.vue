@@ -10,6 +10,7 @@
 import axios from "axios";
 import { ref, watch } from "vue";
 import { useLoading } from "vue-loading-overlay";
+import { api } from "@/config";
 
 export default {
     setup() {
@@ -33,6 +34,9 @@ export default {
                 }
             }
         });
+
+        // axios 전역 설정
+        axios.defaults.baseURL = api.host;
 
         // axios 요청 시작시 스피너 보이기
         // 오류나거나 요청이 끝나면 스피터 숨기기
