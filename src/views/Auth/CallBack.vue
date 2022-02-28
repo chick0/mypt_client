@@ -9,6 +9,7 @@
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import { api, auth } from "@/config";
+import { doLogin } from "@/login";
 
 export default {
     name: "callback-from-oauth",
@@ -29,8 +30,8 @@ export default {
                 },
             })
                 .then((e) => {
-                    const token = e.data.token;
-                    localStorage.setItem("mypt_token", token);
+                    const data = e.data;
+                    doLogin(data.token);
 
                     alert("로그인 성공");
                     router.push({ name: "Home" });

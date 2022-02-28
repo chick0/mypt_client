@@ -7,11 +7,12 @@
 
 <script>
 import { useRouter } from "vue-router";
+import { clearLogin } from "@/login";
 
 export default {
     name: "remove-token",
     setup() {
-        localStorage.removeItem("mypt_token");
+        clearLogin();
 
         const router = useRouter();
         router.push({ name: "Home" });

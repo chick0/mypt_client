@@ -6,10 +6,10 @@
 </template>
 
 <script>
-import { useRoute, useRouter } from "vue-router";
-import { isLogin } from "@/login";
-import { api } from "@/config";
 import axios from "axios";
+import { useRoute, useRouter } from "vue-router";
+import { api } from "@/config";
+import { isLogin, getToken } from "@/login";
 
 export default {
     name: "remove-project",
@@ -22,7 +22,7 @@ export default {
 
         const route = useRoute();
         const uuid = route.params.uuid;
-        const token = localStorage.getItem("mypt_token");
+        const token = getToken();
 
         if (confirm("* 프로젝트를 삭제할까요?")) {
             axios({

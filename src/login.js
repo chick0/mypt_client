@@ -1,7 +1,11 @@
 const tokenKey = "mypt_token";
 
+export function getToken() {
+    return localStorage.getItem(tokenKey);
+}
+
 export function isLogin() {
-    const token = localStorage.getItem(tokenKey);
+    const token = getToken();
 
     return token != null && token.length > 0;
 }

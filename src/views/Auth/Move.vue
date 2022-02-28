@@ -9,13 +9,15 @@
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { api, auth } from "@/config";
+import { getToken } from "@/login";
 
 export default {
     name: "move-to-oauth",
     setup() {
         const router = useRouter();
+        const token = getToken();
 
-        if (localStorage.getItem("mypt_token") == null) {
+        if (token == null) {
             axios({
                 method: "GET",
                 baseURL: api.host,

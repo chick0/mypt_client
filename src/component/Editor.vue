@@ -44,6 +44,7 @@
 import { ref } from "vue";
 import axios from "axios";
 import { api } from "@/config";
+import { getToken } from "@/login";
 
 export default {
     name: "ProjectEditor",
@@ -101,7 +102,7 @@ export default {
         }
 
         const saveProject = () => {
-            const token = localStorage.getItem("mypt_token");
+            const token = getToken();
             const data = {
                 title: title.value,
                 date: date.value,

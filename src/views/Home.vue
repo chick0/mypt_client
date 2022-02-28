@@ -42,7 +42,7 @@ import { ref, watch } from "vue";
 import { parse } from "marked";
 import Projects from "@/component/Projects.vue";
 import { api, aboutMe } from "@/config";
-import { isLogin } from "@/login";
+import { isLogin, getToken, clearLogin } from "@/login";
 import { getMarkdown } from "@/me";
 
 export default {
@@ -64,7 +64,7 @@ export default {
         });
 
         if (isLogin()) {
-            const token = localStorage.getItem("mypt_token");
+            const token = getToken();
             axios({
                 method: "GET",
                 baseURL: api.host,
@@ -81,7 +81,7 @@ export default {
                     const data = e.response.data.message;
 
                     alert(`${code}: ${data}`);
-                    localStorage.removeItem("mypt_token");
+                    clearLogin();
                 });
         }
 
