@@ -15,7 +15,7 @@
 <script>
 import Editor from "@/component/Editor.vue";
 import { useRoute, useRouter } from "vue-router";
-import { isLogin } from "@/check";
+import { isLogin } from "@/login";
 
 export default {
     name: "project-edit",

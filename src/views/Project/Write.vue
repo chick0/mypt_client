@@ -13,7 +13,7 @@
 <script>
 import Editor from "@/component/Editor.vue";
 import { useRouter } from "vue-router";
-import { isLogin } from "@/check";
+import { isLogin } from "@/login";
 
 export default {
     name: "write-project",

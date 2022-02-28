@@ -75,7 +75,7 @@ import { useRoute, useRouter } from "vue-router";
 import { setOptions, Renderer, parse } from "marked";
 import axios from "axios";
 import { api } from "@/config";
-import { isLogin } from "@/check";
+import { isLogin } from "@/login";
 
 export default {
     name: "view-project",

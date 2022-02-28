@@ -7,9 +7,9 @@
 </template>
 
 <script>
+import axios from "axios";
 import { ref, watch } from "vue";
 import { useLoading } from "vue-loading-overlay";
-import axios from "axios";
 
 export default {
     setup() {

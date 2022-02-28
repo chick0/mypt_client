@@ -5,3 +5,11 @@ export function isLogin() {
 
     return token != null && token.length > 0;
 }
+
+export function doLogin(token) {
+    localStorage.setItem(tokenKey, token);
+}
+
+export function clearLogin() {
+    localStorage.removeItem(tokenKey);
+}

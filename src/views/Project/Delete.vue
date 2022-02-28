@@ -7,7 +7,7 @@
 
 <script>
 import { useRoute, useRouter } from "vue-router";
-import { isLogin } from "@/check";
+import { isLogin } from "@/login";
 import { api } from "@/config";
 import axios from "axios";
 

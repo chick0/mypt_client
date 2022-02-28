@@ -42,7 +42,7 @@ import { ref, watch } from "vue";
 import { parse } from "marked";
 import Projects from "@/component/Projects.vue";
 import { api, aboutMe } from "@/config";
-import { isLogin } from "@/check";
+import { isLogin } from "@/login";
 import { getMarkdown } from "@/me";
 
 export default {
