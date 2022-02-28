@@ -24,7 +24,7 @@
     </section>
 
     <section v-if="loginStatus == true">
-        <router-link class="button" :to="{ name: 'Project.Write' }">
+        <router-link class="button" :to="{ name: 'Manage.Write' }">
             프로젝트 등록하기
         </router-link>
     </section>

@@ -26,14 +26,14 @@
     <section v-if="logined == true">
         <router-link
             class="button yellow margin"
-            :to="{ name: 'Project.Edit', params: { uuid: $route.params.uuid } }"
+            :to="{ name: 'Manage.Edit', params: { uuid: $route.params.uuid } }"
         >
             수정하기
         </router-link>
         <router-link
             class="button red"
             :to="{
-                name: 'Project.Delete',
+                name: 'Manage.Delete',
                 params: { uuid: $route.params.uuid },
             }"
         >

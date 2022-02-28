@@ -57,28 +57,26 @@ const routes = [
         props: true,
     },
 
-    // Project manage part
+    // Manage part
     {
-        path: "/write",
-        name: "Project.Write",
+        path: "/manage/new-project",
+        name: "Manage.Write",
         component: () =>
-            import(
-                /* webpackChunkName: "manage" */ "@/views/Project/Write.vue"
-            ),
+            import(/* webpackChunkName: "manage" */ "@/views/Manage/Write.vue"),
     },
     {
-        path: "/project/:uuid/edit",
-        name: "Project.Edit",
+        path: "/manage/:uuid",
+        name: "Manage.Edit",
         component: () =>
-            import(/* webpackChunkName: "manage" */ "@/views/Project/Edit.vue"),
+            import(/* webpackChunkName: "manage" */ "@/views/Manage/Edit.vue"),
         props: true,
     },
     {
-        path: "/project/:uuid/delete",
-        name: "Project.Delete",
+        path: "/manage/:uuid/delete",
+        name: "Manage.Delete",
         component: () =>
             import(
-                /* webpackChunkName: "manage" */ "@/views/Project/Delete.vue"
+                /* webpackChunkName: "manage" */ "@/views/Manage/Delete.vue"
             ),
         props: true,
     },
