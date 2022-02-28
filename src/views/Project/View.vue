@@ -75,7 +75,7 @@ import { useRoute, useRouter } from "vue-router";
 import { setOptions, Renderer, parse } from "marked";
 import axios from "axios";
 import { api } from "@/config";
-import { is_login } from "@/check";
+import { isLogin } from "@/check";
 
 export default {
     name: "view-project",
@@ -140,7 +140,7 @@ export default {
                 // 프로젝트 로딩 완료
                 projectLoad.value = true;
 
-                if (!is_login() && project.value.title.includes("[작성중]")) {
+                if (!isLogin() && project.value.title.includes("[작성중]")) {
                     if (
                         confirm(
                             "* 해당 프로젝트의 설명은 작성 중입니다.\n" +
@@ -180,7 +180,7 @@ export default {
             projectLoad,
             checkLength,
 
-            logined: is_login(),
+            logined: isLogin(),
         };
     },
 };

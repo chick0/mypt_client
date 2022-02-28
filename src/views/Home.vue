@@ -1,6 +1,6 @@
 <template>
     <section class="aboutme">
-        <h1 class="title one" @click="loginCounter++">{{ about_me.name }}</h1>
+        <h1 class="title one" @click="loginCounter++">{{ aboutMe.name }}</h1>
 
         <div v-if="loginUI == true">
             <router-link :to="{ name: 'Auth.Move' }">로그인</router-link> |
@@ -10,14 +10,14 @@
         <ul class="list">
             <li class="item">
                 <span class="badge dark big">Github</span>
-                <a :href="about_me.github" target="_blank" rel="noreferrer">
-                    {{ about_me.github }}
+                <a :href="aboutMe.github" target="_blank" rel="noreferrer">
+                    {{ aboutMe.github }}
                 </a>
             </li>
             <li class="item">
                 <span class="badge primary big">E-Mail</span>
-                <a :href="'mailto:' + about_me.email" target="_blank">
-                    {{ about_me.email }}
+                <a :href="'mailto:' + aboutMe.email" target="_blank">
+                    {{ aboutMe.email }}
                 </a>
             </li>
         </ul>
@@ -41,8 +41,8 @@ import axios from "axios";
 import { ref, watch } from "vue";
 import { parse } from "marked";
 import Projects from "@/component/Projects.vue";
-import { api, about_me } from "@/config";
-import { is_login } from "@/check";
+import { api, aboutMe } from "@/config";
+import { isLogin } from "@/check";
 import { getMarkdown } from "@/me";
 
 export default {
@@ -63,7 +63,7 @@ export default {
             }
         });
 
-        if (is_login()) {
+        if (isLogin()) {
             const token = localStorage.getItem("mypt_token");
             axios({
                 method: "GET",
@@ -86,7 +86,7 @@ export default {
         }
 
         return {
-            about_me,
+            aboutMe,
             path: "/projects",
 
             loginUI,

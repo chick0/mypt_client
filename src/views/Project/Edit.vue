@@ -15,7 +15,7 @@
 <script>
 import Editor from "@/component/Editor.vue";
 import { useRoute, useRouter } from "vue-router";
-import { gate_check } from "@/check";
+import { isLogin } from "@/check";
 
 export default {
     name: "project-edit",
@@ -23,20 +23,22 @@ export default {
         Editor,
     },
     setup() {
-        // gate_check
-        if (gate_check()) {
-            const route = useRoute();
-            const router = useRouter();
-            const UUID = route.params.uuid;
-
-            if (UUID.length != 36) {
-                router.push({ name: "Home" });
-            }
-
-            return {
-                UUID: UUID,
-            };
+        const router = useRouter();
+        if (!isLogin()) {
+            router.push({ name: "Home" });
+            return {};
         }
+
+        const route = useRoute();
+        const UUID = route.params.uuid;
+
+        if (UUID.length != 36) {
+            router.push({ name: "Home" });
+        }
+
+        return {
+            UUID: UUID,
+        };
     },
 };
 </script>

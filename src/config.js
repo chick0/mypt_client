@@ -5,7 +5,7 @@ export const api = {
             : "http://localhost:5000",
 };
 
-export const about_me = {
+export const aboutMe = {
     name: "chick_0",
     email: "chick_0@ch1ck.xyz",
     github: "https://github.com/chick0",

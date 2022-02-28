@@ -1,20 +1,7 @@
-import { useRouter } from "vue-router";
+const tokenKey = "mypt_token";
 
-export function is_login() {
-    const token = localStorage.getItem("mypt_token");
+export function isLogin() {
+    const token = localStorage.getItem(tokenKey);
 
     return token != null && token.length > 0;
-}
-
-export function gate_check() {
-    if (!is_login()) {
-        const router = useRouter();
-
-        alert("로그인 상태가 아닙니다.");
-        router.push({ name: "Home" });
-
-        return false;
-    } else {
-        return true;
-    }
 }

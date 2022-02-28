@@ -12,7 +12,8 @@
 
 <script>
 import Editor from "@/component/Editor.vue";
-import { gate_check } from "@/check";
+import { useRouter } from "vue-router";
+import { isLogin } from "@/check";
 
 export default {
     name: "write-project",
@@ -20,13 +21,16 @@ export default {
         Editor,
     },
     setup() {
-        // gate_check
-        if (gate_check()) {
-            return {
-                uuid: "new", // 새로운 프로젝트!
-                show: true,
-            };
+        const router = useRouter();
+        if (!isLogin()) {
+            router.push({ name: "Home" });
+            return {};
         }
+
+        return {
+            uuid: "new", // 새로운 프로젝트!
+            show: true,
+        };
     },
 };
 </script>
