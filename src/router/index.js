@@ -25,7 +25,7 @@ const routes = [
         path: "/auth/callback",
         // name: "Auth.Callback",
         component: () =>
-            import(/* webpackChunkName: "auth" */ "@/views/Auth/Callback.vue"),
+            import(/* webpackChunkName: "auth" */ "@/views/Auth/CallBack.vue"),
     },
 
     // Tag part
