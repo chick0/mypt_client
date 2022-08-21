@@ -1,5 +1,5 @@
 # this project is deprecated
-* [ch1ck.xyz](https://github.com/chick0/ch1ck.xyz)
+* [new client](https://github.com/chick0/portfolio-client)
 
 # client-side
 This is **Vue Client** for my **[Portfolio](https://ch1ck.xyz)**!
